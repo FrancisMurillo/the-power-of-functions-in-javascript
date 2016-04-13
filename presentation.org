@@ -1,0 +1,1999 @@
+#+Title: The Power Of Functions In JavaScript
+#+Author: Francis Murillo
+#+Email: francisavmurillo@gmail.com
+#+Date: Apr. 14, 2016
+
+#+OPTIONS: reveal_control:t reveal_progress:nil reveal_history:nil reveal_center:t
+#+OPTIONS: reveal_slide_number:nil
+#+OPTIONS: reveal_rolling_links:nil reveal_keyboard:t reveal_overview:nil num:nil
+
+#+OPTIONS: reveal_width:1200 reveal_height:800
+#+OPTIONS: toc:nil
+
+#+OPTIONS: reveal_title_slide:nil
+#+OPTIONS: reveal_single_file:t
+
+#+REVEAL_HLEVEL:1
+
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+
+#+REVEAL_THEME: blood
+#+REVEAL_TRANS: linear
+#+REVEAL_SPEED: fast
+
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="The Power Of Functions In Javascript">
+
+* The Power Of Functions In JavaScript
+
+  By *Francis Murillo*
+
+
+  On *Apr. 14, 2016*
+
+
+  At *Manila, JavaScript #06*
+
+
+  *francisavmurillo@gmail.com*
+
+
+  *https://github.com/FrancisMurillo/the-power-of-functions-in-javascript*
+
+
+* Foolish Assumptions
+
+   - You know the basics of JavaScript syntax
+   - I am talking about JavaScript in the browser
+   - You and I hate presentations that waste time
+
+* A Little Background
+
+  Just a mediocre software developer.
+
+* Before We Begin
+
+  #+BEGIN_QUOTE
+  Judge a man by his questions rather than his answers
+
+  -- Voltaire
+  #+END_QUOTE
+
+#+ATTR_REVEAL: :frag t
+   Who here thinks *JavaScript* (in the browser) sucks?
+
+** JavaScript Sucks
+
+   Where do I begin?
+
+   - Lousy type system
+   - No module system
+   - Global by default
+   - No block scope
+   - Monkey patching
+   - The rest couldn't fit on one slide
+
+   But I am not here to bash on the language.
+
+   How do we write good code in a (sucky but awesome) language?
+
+** Writing *Good Code* For JavaScript
+
+   How do write code that is...
+
+   - Modular
+   - Extensible
+   - Reusable
+   - Readable
+   - Poetry
+
+#+ATTR_REVEAL: :frag t
+   JavaScript already has a concept for that
+
+#+ATTR_REVEAL: :frag t
+   It's not a framework, or a library or a new concept and it's been around
+   since ancient times
+
+** Function
+
+   The building blocks of programs
+
+   #+BEGIN_SRC javascript
+     var theAllPowerful = function () {
+         return 'Bow before me';
+     }
+   #+END_SRC
+
+* Functions In JavaScript
+
+  #+BEGIN_QUOTE
+  The best thing about JavaScript is its implementation of functions. It
+  got almost everything right. But, as you should expect with
+  JavaScript, it didn’t get everything right.
+
+  -- Douglas Crockford
+  #+END_QUOTE
+
+  In order to understand their supremacy, let's review what functions look like
+  in JavaScript first.
+
+** Things You Should Know
+
+   Just a brief review of the following.
+
+   - Functions
+   - =arguments= keyword
+   - =call= and =apply= function
+   - Closure / Function Scope
+
+* Functions
+
+  The bread and butter of programmers
+
+** Declaring Functions
+
+  There are two primary ways to declare a function.
+
+  #+BEGIN_SRC javascript
+    // Function statement
+    function greetLucy() {
+        return 'Hello Lucile';
+    }
+
+    // Function expression
+    var greetPatty = function _greetPatty() {
+        return 'Hello Sir';
+    };
+  #+END_SRC
+
+** Invoking Functions
+
+   There's three known ways to call or invoke a function.
+
+   #+BEGIN_SRC javascript
+     // Math yo
+     var add = function _doTheMath(x, y) {
+         return x + y;
+     };
+
+     // The canonical function invokation
+     add(1, 2);
+
+     // The functional way of calling functions
+     // We'll get to this later
+     add.call(null, 1, 2);
+
+     // Same thing above but the arguments is passed as an array
+     add.apply(null, [1, 2]);
+   #+END_SRC
+
+** Returning An Output
+
+   =return= is the output of the function. If there is no =return=, an
+   implicit =undefined= is the output.
+
+   #+BEGIN_SRC javascript
+     function returnSomething(x) {
+         return 'I call ' + x.toString();
+     };
+
+     var noReturn = function () {
+         // do something
+     }
+
+     console.log(returnSomething('Pikachu')); // out: 'I call Pikachu'
+     console.log(noReturn()); // out: undefined
+   #+END_SRC
+
+** Convention
+
+   For this presentation, the preferred way of declaring a function is a
+   *function expression* to avoid function hoisting.
+
+   #+BEGIN_SRC javascript
+     var theLongerWay = function isTheSaferWay() {
+         return true;
+     };
+   #+END_SRC
+
+* =arguments=
+
+  Every function has an implicit variable *arguments*
+
+  #+BEGIN_SRC javascript
+    var MyModule = {
+        whatIsThis: function (/* args */) {
+            // And what is
+            console.log(arguments);
+        }
+    }
+
+    MyModule.whatIsThis(1, 2, 3, 4);
+    // out(arguments): [1, 2, 3, 4]
+  #+END_SRC
+
+** My =arguments=
+
+   An array-like object containing the arguments
+
+   #+BEGIN_SRC javascript
+     var showMeTheEvidence = function (a, b, c) {
+         var args = arguments;
+
+         console.log([a, b, c]);
+         console.log(args);
+     }
+
+     showMeTheEvidence(1, 2, 3) // out: [1,2,3]
+     showMeTheEvidence('This', 'is', 'nuts') // out: ['This', 'is', 'nuts']
+   #+END_SRC
+
+** Convention
+
+   Whenever I depend on the =arguments= keyword, I put a comment on the
+   function header what the local variable name would be and convert it
+   into an array using =Array.prototype.slice.call(arguments)= or the
+   shorter  =[].slice.call(arguments)=.
+
+   #+BEGIN_SRC javascript
+     var extraRicePlease = function (/* args */) {
+         var args = [].slice.call(arguments); // This is awkward
+
+         args.push('Extra rice'); // Adding arguments
+
+         console.log(args);
+     };
+
+     extraRicePlease('BBQ', 'Ice Tea'); // out: ['BBQ', 'Ice Tea', 'Extra Rice']
+   #+END_SRC
+
+* =f.call()= and =f.apply()=
+
+  Every function has the method =call= and =apply= to invoke them functionally
+
+  #+BEGIN_SRC javascript
+    var fullName = function (firstName, lastName) {
+        // return [firstName, lastName].join(' ');
+        return firstName + ' ' + lastName;
+    };
+
+    // Normal invokation
+    console.log(fullName('Francis', 'Murillo')); // out: Francis Murillo
+
+    // Using call() without the
+    console.log(fullName.call(null, 'Mr', 'Robot')); // out: 'Mr Robot'
+
+    // Using apply()
+    console.log(fullName.apply(null, ['Jake', 'Dog'])); // out: 'Jake Dog'
+  #+END_SRC
+
+** Convention
+
+   =call= and =apply= will always have =null= as the first argument
+   since we don't care about =this=.
+
+   =apply= is the more preferred way of calling functions if you don't
+   know the arguments, and =call= if you do.
+
+* Closure / Function Scope
+
+  Inner functions have access to it's the variables of the outer function
+
+  #+BEGIN_SRC javascript
+    var outerFunction = function (outerArg) {
+        var outerVar = outerArg + 10;
+
+        return function innerFunction(innerArg) {
+            var innerVar = outerVar + innerArg;
+
+            return [outerArg, outerVar, innerArg, innerVar];
+        }
+    }
+
+    var newFunction = outerFunction(10);
+    // outerArg: 10
+    // outerVar: 20
+
+    console.log(newFunction(20));
+    // out: [10, 20, 20, 40]
+
+    console.log(newFunction(100));
+    // out: [10, 20, 100, 120];
+  #+END_SRC
+
+* The Power Of Functions In JavaScript
+
+  #+BEGIN_QUOTE
+  Good design is not about making grand plans, but about taking things
+  apart.
+
+  -- Rich Hickey
+  #+END_QUOTE
+
+  At last, let's talk about functions.
+
+** Functional Programming In JavaScript
+
+   I don't want to bore you with a definition. It's really just a mindset
+
+   - Input and Output
+   - Combining Functions
+   - Process over Step
+   - Everything is a Function
+   - Avoiding State
+
+** Why I Like Functional Programming?
+
+   - First principles
+   - Easier to write good code
+   - Easier to reason
+   - Natural and Mathematical
+   - *Fun and Creative*
+
+** What This Is Not
+
+   - A full course in this paradigm
+   - A pure functional style
+   - An introduction to JavaScript
+   - Easy
+
+** What This Is
+
+   To introduce you to think and write in a functional style can help
+   you write good code in JavaScript and nothing more.
+
+* The Idea
+
+  #+BEGIN_QUOTE
+  What is the most resilient parasite? Bacteria? A virus? An intestinal
+  worm? An idea. Resilient... highly contagious. Once an idea has taken
+  hold of the brain it's almost impossible to eradicate. An idea that is
+  fully formed - fully understood - that sticks; right in there
+  somewhere.
+
+  -- Cobb from Inception
+  #+END_QUOTE
+
+** The Ideas Of Functional Programming For JavaScript
+
+   The whole of the presentation
+
+   - Thinking in terms of collections or as a whole
+   - Separating behaviors and combining them
+   - =map=, =filter= and =reduce=
+   - =compose= and =curry=
+
+** Caveat
+
+   You do not have to understand the code, just feel and see that this
+   is much cleaner and better as a whole.
+
+   The idea is more important, ignore the nuances of the language but
+   see that it is easily done.
+
+* Thinking With Functions
+
+  Let's talk about lists and their functions namely
+
+  Spoilers
+
+  - =.forEach=
+  - =.map()=
+  - =.filter=
+  - =.reduce=
+
+** A Question Of Intent
+
+  Who here uses a for loop like so?
+
+  #+BEGIN_SRC javascript
+    var items = ['Hey Arnold', 'Adventure Time', 'JavaScript: The Good Parts'];
+
+    for (var i = 0; i < items.length; i += 1) {
+        console.log(item[i]);
+    }
+  #+END_SRC
+
+*** What's Wrong With For Loops?
+
+    Intention
+
+    When iterating through an list, one should not be concerned with the
+    length and index of it. All you need is the element and do something
+    with it.
+
+    #+BEGIN_SRC javascript
+      var heroes = [ 'Cloud', 'Tyler', 'Joel'];
+
+      for (var i = 0; i < heroes.length; i+= 1) {
+          var hero = heroes[i];
+
+          if (hero === 'Tyler') { // The intent
+              console.log('Everything is free of charge.');
+          }
+      }
+    #+END_SRC
+
+    How do we loop over each element without being concerned with the
+    loop mechanics?
+
+*** No More For Loops
+
+    Our journey starts by using the [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global][forEach]] method of an list which
+    allows you to loop through a list given a callback.
+
+    #+BEGIN_SRC javascript
+      var assassins = [ 'Altair', 'Ezio', 'Connor'];
+
+      // Use forEach to iterate thorugh a list
+      assassins.forEach(function getConnor(assassin) { // Give the function a descriptive name
+          if (assassin === 'Connor') {
+              console.log('Where is Charles Lee');
+          }
+      });
+    #+END_SRC
+
+    Now this looks better, we separated the intention and the
+    looping mechanism is now hidden as an abstraction.
+
+    #+ATTR_REVEAL: :frag t
+    But did you notice we passed a function to another function(the callback).
+
+** 0th Virtue: Function Variables
+
+   The bare minimum that allows JavaScript to be functional is that
+   functions are first class objects meaning you can pass functions as
+   arguments and as variables.
+
+   #+BEGIN_SRC javascript
+     var myHandler = function (x) { // Assigning functions to variables
+         return 'You shall not pass';
+     };
+
+     var executeHandler = function (handler) { // A function taking a function
+         handler('An ignored value');
+     }
+
+     executeHandler(myHandler); // Passing functions around
+   #+END_SRC
+
+   If JavaScript did not have this feature, we would not be talking
+   about it.
+
+*** Implementing forEach
+
+    Let's implement our own =forEach= for analysis
+
+    #+BEGIN_SRC javascript
+      // Naive implentation
+      var forEach = function (f, xs) {
+          for (var i = 0; i < xs.length; i+=1) {
+              var x = xs[i];
+
+              f(x);
+          }
+      };
+
+      var pi = [3, 1, 4, 1, 6, 1, 8];
+
+      // Almost looks the same
+      forEach(function displayTheNumber(n) {
+          console.log(n);
+      }, xs);
+    #+END_SRC
+
+    Pretty easy but this demonstrates how passing functions can improve
+    the logic
+
+** Transforming Collections
+
+   Let's move on a similar case of transforming a collection.
+
+   How about given a list of text, capitalize each one.
+
+   #+BEGIN_SRC javascript
+     var words = ['What', 'Are', 'Words']; // Base list
+
+     var upperWords = []; // New list which is just a placeholder
+
+     words.forEach(function capitalize(word) {
+         var upperWord = word.toUpperCase();
+
+         upperWords.push(upperWord); // Add the value to the list
+     });
+
+     console.log(upperWords); // out: ['WHAT', 'ARE', 'WORDS']
+   #+END_SRC
+
+   In this case, we want to capitalize the whole list, not
+   capitalize each word in the list.
+
+*** The Intention
+
+    The intention of the problem if we define it as a function.
+
+    #+BEGIN_SRC javascript
+      var capitalize = function theLoopIntention(text) {
+          return text.toUpperCase(); // Notice our function has a return
+      };
+    #+END_SRC
+
+    What if we can just apply it as a whole instead of defining it?
+
+*** Using =map=
+
+    Thankfully the [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map][map]] method of lists allows this.
+
+    #+BEGIN_SRC javascript
+      var words = ['What', 'Are', 'Words']; // Base list
+
+      var capitalize = function theLoopIntention(text) {
+          return text.toUpperCase();
+      };
+
+      // Just like forEach
+      var newWords = words.map(capitalize);
+
+      // or if you want to inline it
+      var newWordsInline = words.map(function _inlineCapitalize(word) {
+          return text.toUpperCase();
+      });
+
+      console.log(newWords); // Like the last
+    #+END_SRC
+
+    Again, we have cleanly separated the intention from the loop.
+
+*** Examples of map
+
+    Just some examples to get improve comprehension
+
+    #+BEGIN_SRC javascript
+      var people = [
+          { firstName: 'Linus', lastName: 'Van Pelt', nickname: 'Sweet Baboo'},
+          { firstName: 'Charlie', lastName: 'Brown', nickname: 'Blockhead' }
+      ];
+
+      var getNickname = function (person) {
+          return person.nickname;
+      };
+
+      var getFullName = function (person) {
+          return person.firstName + ' ' + person.lastName;
+      };
+
+      var capitalize = function theLoopIntention(text) {
+          return text.toUpperCase();
+      };
+
+
+      // Case: Getting a property from a list of objects
+      console.log(people.map(getNickname)); // out: ['Sweet Baboo', 'Blockhead']
+
+      console.log(people // You can chain maps by the way
+                  .map(getFullName)
+                  .map(capitalize)); // out: ['LINUS VAN PELT', 'CHARLIE BROWN']
+    #+END_SRC
+
+*** Implementing map
+
+    Just like with =forEach=, implenting the =map= is easy.
+
+    #+BEGIN_SRC javascript
+      var map = function (f, xs) {
+          var ys = [];
+
+          xs.forEach(function (x) {
+              var y = f(x);
+
+              ys.push(y);
+          });
+
+          return ys;
+      };
+
+      var wrapAsText = function (x) {
+          return '<p>' + x + '<p/>';
+      };
+
+      var labels = ['First Name', 'Last Name'];
+
+      console.log(map(wrapAsText, labels));
+      // out: ['<p>First Name</p>', '<p>Last Name</p>'];
+    #+END_SRC
+
+    Again we separated the intention from the implementation. Isn't this
+    a recurring theme?
+
+** 1st Virtue: Input And Output
+
+   The user of the function should only be concerned with the input and
+   output, not how it is done. It is transforming the inputs to produce
+   the output.
+
+   In the case of =map=, given a list and a transformation function,
+   return a transformed list. You should not care how it did it, be it a
+   for loop or a forEach function or a recursion.
+
+   *What*, not *how* is the thinking style here.
+** Reflection: =forEach= and =map=
+
+   So far we just separated the intent from our for loop and we came up
+   with a neat little behavior.
+
+   Cool, so what's next?
+
+** Shrinking Collections
+
+   Let's move on to filtering collections given a criteria.
+
+   Say we have a list of movie titles and we only want the James Bond
+   films.
+
+   #+BEGIN_SRC javascript
+     var films = {
+         { name: 'Moonraker', category: 'James Bond'},
+         { name: 'Sucker Punch' category: 'Action'},
+         { name: 'Casino Royale', category: 'James Bond'}
+     };
+
+     var isJamesBondFilm = function _predicateIntention(film) {
+         return film.category === 'James Bond';
+     };
+
+     whatFunctionIsThis(isJamesBondFilm, films);
+   #+END_SRC
+
+   There is a function for lists called [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter][filter]] that can get our job done
+
+*** Predicate Functions
+
+    Before we use =filter=, a bit of terminology.
+
+    A *predicate function* is just a function that returns =true= or
+    =false=
+
+    #+BEGIN_SRC javascript
+      // Predicate functions
+      var equal = function (a, b)  { return a === b; },
+          isOdd = function (n) { return n % 2 === 0; },
+          alwaysTrue = function () { return true; }; // Always returns true
+
+      // Not predicate functions
+      var toString = function (x) { return x.toString(); }, // Text value
+          concat = function (xs, ys) { return xs.concat(ys); }; // List value
+    #+END_SRC
+
+*** Using =filter=
+
+    Given a predicate or a boolean function and a list, return a new
+    list where the predicate is true over the list.
+
+    #+BEGIN_SRC javascript
+      // Some trivial examples
+      var numbers = [1, 2, 3, 4, 5];
+
+      var isOdd = function (number) {
+          return number % 2 === 1;
+      };
+
+      var isTheOne = function _heyJetLi(number) {
+          return number === 1;
+      };
+
+
+      console.log(numbers.filter(isOdd)); // out: [1,3,5]
+      console.log(numbers.filter(isTheOne)); // out: [1]
+    #+END_SRC
+
+    So we have another way to work with lists.
+
+*** Implementing =filter=
+
+    Again, we implement this for our own benefit.
+
+    #+BEGIN_SRC javascript
+      // Another naive
+      var filter = function (p, xs) {
+          var ys = [];
+
+          forEach(function _checkPredicate(x) {
+              var y = x; // Just to get the name right with ys
+
+              if (p(x)) {
+                  ys.push(y);
+              }
+          });
+
+          return ys;
+      };
+
+      var isLowerCase = function (text) {
+          return text.isLowerCase() === text;
+      };
+
+      var vendors = ['TORGUE', 'Hyperion', 'dahl'];
+
+      console.log(filter(isLowerCase, vendors)); // out: ['dahl']
+    #+END_SRC
+
+** Nested Ifs
+
+   Who here likes nested =if= statements?
+
+   #+BEGIN_SRC javascript
+     var a === true,
+         b === false;
+
+     if (!a) {
+         if (b) {
+             // Two ifs and you might want to refactor this if you can
+         } else {
+         }
+     }
+
+     var c === false;
+
+     if (!c) {
+         if (!b) {
+             if (!a) {
+                 // Who the hell will write this?
+             }
+         }
+     }
+   #+END_SRC
+
+   I don't like branching, it's too easy to do and easy to make the code
+   more complicated to reason about with too many ifs.
+
+** Code Review
+
+   Consider this code as an example of nesting ifs. Given a list of
+   books that are to be processed and a book isbn table, find all the
+   unprocessed books without an isbn
+
+   #+BEGIN_SRC javascript
+     var books = [
+         { name: 'The Picture Of Dorian Gray', processed: false},
+         { name: 'Minecraft For Dummies', processed: true},
+         { name: 'Functional Programming In Javascript', processed: false}
+     ];
+
+     var bookIsbnTable = {
+         'The Picture Of Dorian Gray': '1234',
+         'Minecraft For Dummies': '2344',
+         'Skyrim: The Official Guide': '3450'
+     }
+
+     var booksWithoutIsbn = [];
+
+     books.forEach(function (book) {
+         if (!book.isProcessed) {
+             var isbn = get(book.name, bookIsbnTable);
+
+             if (!isbn) {
+                 booksWithoutIsbn.push(book);
+             }
+         }
+     })
+   #+END_SRC
+
+   Let's refactor this to get to my point
+
+*** Refactor 01: Separate Intentions
+
+   Separate the main intentions
+
+   #+BEGIN_SRC javascript
+         var books = [ /* ... */];
+
+         var bookIsbnTable = { /* ... */ };
+
+         // Intentions
+         var isProcessed = function (book) {
+             return book.isProcessed === true;
+         };
+
+         var hasNoIsbn = function (book) {
+             var isbn = get(book.name, bookIsbnTable);
+
+             return !isbn;
+         }
+
+         var booksWithoutIsbn = [];
+
+         books.forEach(function (book) {
+             if (isProcessed(book)) {
+                 if (hasIsbn(book)) {
+                     booksWithoutIsbn.push(book);
+                 }
+             }
+         })
+   #+END_SRC
+
+*** Refactor 02: Use Filter
+
+    Let's remove the first =if= statement using the new found =filter= power
+
+   #+BEGIN_SRC javascript
+     var books = [ /* ... */];
+
+     var bookIsbnTable = { /* ... */ };
+
+     // Intentions
+     var isProcessed = function (book) {
+         return book.isProcessed === true;
+     };
+
+     var hasNoIsbn = function (book) {
+         var isbn = get(book.name, bookIsbnTable);
+
+         return !isbn;
+     }
+
+     var booksWithoutIsbn = [];
+
+     books
+         .filter(isProcessed) // The if statement becomes a transformation
+         .forEach(function (book) {
+             if (hasNoIsbn(book)) { // Just one if left
+                 booksWithoutIsbn.push(book);
+             }
+         });
+   #+END_SRC
+
+   We removed one if, can we remove the other?
+
+*** Refactor 03: Use Filter Again
+
+    We can chain the =filter= to remove the other if
+
+   #+BEGIN_SRC javascript
+      var books = [ /* ... */];
+
+      var bookIsbnTable = { /* ... */ };
+
+      // Intentions
+      var isProcessed = function (book) {
+          return book.isProcessed === true;
+      };
+
+      var hasNoIsbn = function (book) {
+          var isbn = get(book.name, bookIsbnTable);
+
+          return !isbn;
+      }
+
+      var booksWithoutIsbn = [];
+
+      books
+         .filter(isProcessed)
+         .filter(hasNoIsbn) // We not have a filter chain
+         .forEach(function (book) { // This is somewhat awkward to have
+             booksWithoutIsbn.push(book);
+         });
+   #+END_SRC
+
+   And maybe we can remove the awkward =forEach= here
+
+*** Refactor 04: Just =filter=
+
+    We just let the =filter= chain be the result and we're done
+
+   #+BEGIN_SRC javascript
+     var books = [ /* ... */];
+
+     var bookIsbnTable = { /* ... */ };
+
+     // Intentions
+     var isProcessed = function (book) {
+         return book.isProcessed === true;
+     };
+
+     var hasNoIsbn = function (book) {
+         var isbn = get(book.name, bookIsbnTable);
+
+         return !isbn;
+     }
+
+     var booksWithoutIsbn = books
+         .filter(isProcessed)
+         .filter(hasNoIsbn);
+   #+END_SRC
+
+   Although contrived, we just eliminated the if statements with the
+   =filter= function.
+
+*** Avoiding Ifs With =filter=
+
+    Notice how the code is much more readable and easier to understand
+    without the explicit ifs?
+
+    #+BEGIN_SRC javascript
+      var booksWithoutIsbn = books
+          .filter(isProcessed)
+          .filter(hasNoIsbn);
+    #+END_SRC
+
+    The other thing about this is that the =if= is a process flow or a
+    transformation over the list, not as a branching logic.
+
+    Also notice that if someone wants to add another condition, they are
+    more likely to add another filter to the chain and less likely to
+    just hack the if condition.
+
+** Reflection: =filter=
+
+   So we gained a new capability to filter a list and it applies to
+   objects as well. Again this stems from the fact that we are just
+   refactoring.
+
+   This leads us to the next virtue
+
+** 2nd Virtue: Data Abstraction
+
+   By thinking about the operations over data, we can abstract the
+   behavior to other containers.
+
+   #+BEGIN_SRC javascript
+     var f = function (x) {
+         // Do something with x
+     }
+
+     mapX(f, xs); // What is xs? What if xs is a Promise, an Observable
+     filterX(f, xs); // Sometimes we don't really care
+   #+END_SRC
+
+   Again the process matters more than the data. If there was another
+   data type the same ideas can come into place.
+
+** Collecting Collections
+
+   Finally, we move on to collecting or aggregating all the values of an collection.
+
+   For example, given a list of numbers, return their sum
+
+   #+BEGIN_SRC javascript
+     // You're probably getting the picture or getting bored
+     var numbers = [1, 2, 3, 4, 5];
+
+     var add = function (a, b) {
+         return a + b;
+     };
+
+     var sum = 0;
+
+     numbers.forEach(function (number) {
+         sum = add(sum, number);
+     });
+
+     console.log(sum);
+   #+END_SRC
+
+   We have the [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FArray%2FReduc][reduce]] function for this
+
+*** Using =reduce=
+
+    =reduce= takes a combining function and a list and returns the
+    combined values of the list.
+
+   #+BEGIN_SRC javascript
+     var numbers = [1, 2, 3, 4];
+
+     var add = function _theRealIntent(a, b) {
+         return a + b
+     };
+
+     var sum = numbers.reduce(function _combiningFunction(acc, number) { // Explain this bro
+         // acc is the accumulated value
+         // number functions as the number in the list
+         return acc + number;
+     }, 0);
+     // var sum = numbers.reduce(add, 0); // Better, once you understand combining operations
+
+     console.log(sum); // out: 10
+   #+END_SRC
+
+   Let's implement this like the other two
+
+*** Implementing =reduce=
+
+    Once you implement it, the idea of combining function is easy. Again
+    this is just the code above that is just refactored.
+
+    #+BEGIN_SRC javascript
+      var reduce = function (oper,  initialValue,  xs) {
+          var currentValue = initialValue;
+
+          forEach(function combine(x) {
+              // Combine the currentValue and the next
+              currentValue = oper(currentValue, x);
+          });
+
+          return totalValue;
+      };
+    #+END_SRC
+
+    Let's have the usual examples
+
+*** Example of =reduce=
+
+    Some basic examples of =reduce=
+
+    #+BEGIN_SRC javascript
+      // I like Math
+      var numbers = [1, 2, 3, 4];
+
+      var multiply = function (x, y)  {
+          return x * y;
+      };
+
+      console.log(numbers.reduce(multiply, 1)); // out: 1 * 1 * 2 * 3 * 4 = 24
+      console.log(numbers.reduce(multiply, 5)); // out: 5 * 1 * 2 * 3 * 4 = 120
+    #+END_SRC
+
+    How about some real examples?
+
+*** A More Specific =find=
+
+    Sometimes in a list, you want to find a specific value given a
+    criteria or predicate.
+
+    We can implement this using =filter= but we can also implement it
+    using =reduce=.
+
+    #+BEGIN_SRC javascript
+      var find = function (p, defaultValue, xs) {
+          return xs.reduce(function (prev, next) {
+              return p(next) === true ? next : prev;
+          }, defaultValue);
+      };
+
+      var findWithFilter = function (p, defaultValue, xs) {
+          var foundValues = xs.filter(p);
+
+          return foundValues.length > 0 ? foundValues[0] : defaultValue;
+      };
+
+      var isTheMeaningOfLife  = function (number) {
+          return number === 42;
+      };
+
+      console.log(find(isTheMeaningOfLife, 0, [36, 42, 48])); // out: 42
+      console.log(find(isTheMeaningOfLife, 0, [37, 43, 49])); // out: 0, the default value
+    #+END_SRC
+
+** Reflection: =reduce=
+
+   So we now have a tool that aggregates or combines list.
+
+   We now have a trio of tools and it came naturally due to a need to
+   separate intention. Nothing complex has been done so far which is
+   impressive what a simple function can do.
+
+** All Together Now
+
+   Given a list of people, find all the people that are not minors and
+   compute the total salary.
+
+   #+BEGIN_SRC javascript
+     var people [
+         { name: 'Mr Midnight', age: 20, salary: 50},
+         { name: 'Mr Muffin', age: 25, salary: 60},
+         { name: 'Ms Pepper', age: 17, salary: 40}
+     ];
+
+     var isNotAMinor = function (person) {
+         return person.age >= 18;
+     }
+
+     var getSalary = function (person) {
+         return person.salary;
+     }
+
+     var add = function (x, y) {
+         return x + y
+     }
+
+     console.log(people // Wow
+                 .filter(isNotAMinor)
+                 .map(getSalary)
+                 .reduce(add)); // Nice to see the three working together
+   #+END_SRC
+
+** Quick Review
+
+   Just a quick review of everything we've done.
+
+   - Think in terms of input and output
+   - Separate the intention from the implementation
+   - =map=, =filter= and =reduce= should be your best friends
+   - Process over data
+
+* Combining Functions
+
+  Let's get to the fun stuff.
+
+  Spoilers
+
+  - =compose= & =pipe=
+  - =curry=
+
+** 3rd Virtue: Functions As Units Of Behavior
+
+   Functions represents behavior or what we have been calling
+   intentions.
+
+   Primarily, a function should represent an idea and not be tangled
+   with other details
+
+*** A Simple Event
+
+    Let's say we have two buttons with their corresponding handlers.
+
+    #+BEGIN_SRC javascript
+      var buttonHandler = function () {
+          console.log('This button does something awesome');
+      }
+
+      var otherButtonHandler = function () {
+          console.log('This button does something way better than the other one');
+      }
+    #+END_SRC
+
+    All is well
+
+*** Adding A Counter
+
+    Now, what if we want to track send information to the server that a
+    button was clicked? Let's say we have a =sendClick= function that
+    sends data to the server.
+
+    #+BEGIN_SRC javascript
+      var sendClick = function () { /* whatever */}
+
+      var buttonHandler = function () {
+          sendClick(); // Dirty
+
+          console.log('This button does something awesome');
+      }
+
+      var otherButtonHandler = function () {
+          sendClick(); // What the hell are you doing here?
+
+          console.log('This button does something way better than the other one');
+      }
+    #+END_SRC
+
+    But this implementation is dirty, copy pasting a method for each
+    handler and it ruins the fact the handler should be concerned with
+    sending logging data or what have you.
+
+*** Simple Function Over Functions
+
+    What we want is to separate the handler from the logging. What we
+    want is to execute a function before the main one.
+
+    Let's call warm up with this =doBefore= function combiner, we will
+    finally use =apply= to invoke the functions.
+
+   #+BEGIN_SRC javascript
+     var doBefore = function (before, main) {
+         return function _executor(/* args */) { // A function that combines functions
+             var args = [].slice.call(arguments);
+
+             before.apply(null, args); // Execute the function before
+
+             return main.apply(null, args); // Execute the main function
+         }
+     }
+    #+END_SRC
+
+    Let's use this in our example
+
+*** Using =doBefore=
+
+    Let's see how it makes the code much better
+
+    #+BEGIN_SRC javascript
+      var sendClick = function () { /* whatever */}
+
+      var buttonHandler = doBefore(sendClick, function () { // Wrapping the handlers
+          console.log('This button does something awesome');
+      }); // This functions returns the combined function
+
+      var otherButtonHandler = doBefore(sendClick, function () { // Ditto
+          console.log('This button does something way better than the other one');
+      });
+    #+END_SRC
+
+    Notice our handlers are just the same except they are now wrapped
+    with the logging function. This is what it means to combine and
+    separate behaviors.
+
+** Reflection: Higher Order Functions
+
+   How many times have you copy pasted a block of function to several
+   places without consideration for it's purpose or intent?
+
+   If we cleanly separate the intentions of our code and combine them
+   properly, we can get easy to read and understand code.
+
+   What we just did is make an *higher order function* but that's just
+   definition.
+
+** Learning To Compose
+
+   Once you understand that you can join functions together, you can
+   create a pipeline using functions.
+
+   Let's start with an simple problem of uppercasing every text field in
+   an object then converting into JSON.
+
+   #+BEGIN_SRC javascript
+     var isText = function (text) {
+         return typeof text === 'string';
+     }
+
+     var objectToUpperCase = function (object) {
+         return mapObject(function (value) {
+             return isText(value) ? value.toUpperCase();
+         }, object);
+     };
+
+     var objectToJson = function (object) {
+         return JSON.parse(object);
+     };
+
+     var data = { name: 'Muffin', breed: 'Puspin', age: 4 };
+
+     var output = objectToJson(objectToUpperCase(data)); // The end result
+   #+END_SRC
+
+   Better if the two functions can be joined as one intention, =objectSerialize=?
+
+*** A Messy Invokation
+
+    Just to demonstrate the extra parenthesis are not just dirty, but
+    harder to read and maintain
+
+    #+BEGIN_SRC javascript
+      // Imagine you have three weird functions
+      var x = function (v) {/* ... */},
+          y = function (v) {/* ... */},
+          z = function (v) {/* ... */};
+
+      var a = null;
+
+      // This is ugly
+      var b = x(y(z(a)));
+
+      var t = function (v) {
+          return x(y(z(v)));  // Better hide the mess like a guy
+      };
+
+      // Better but kinda hacked
+      var c = t(a);
+    #+END_SRC
+
+    What we really care about is =c=, not =x=, =y=, or =z=. What we need
+    is something to tie the pipeline.
+
+*** Introducting =compose=
+
+    So the function we're looking for =compose=, given two functions it
+    will call the second one with the arguments and pass it's output to
+    the first function and be the function of the return value.
+
+    Easier to explain with code. Remember we want to remove the ugly
+    wrapping of parenthesis in function invokation.
+
+    #+BEGIN_SRC javascript
+      var compose = function (outer, inner) {
+          return function (/* args */) {
+              var args = arguments;
+
+              var innerValue = inner.apply(null, args),
+                  outerValue = outer(firstValue);
+
+              // or which looks natural // return outer(inner.apply(null, arguments));
+              return nextValue;
+          };
+      },
+    #+END_SRC
+
+    Let's see this in our example above
+
+*** Using =compose=
+
+    Let's join those two functions in with =compose=
+
+    #+BEGIN_SRC javascript
+      var objectToUpperCase = function (object) {
+          // ...
+      };
+
+      var objectToJson = function (object) {
+          // ...
+      };
+
+      // Tying the two functions together, looks cleaner than before
+      var objectSerialize = compose(objectToJson, objectToUpperCase);
+      // Remember to read from right to left in order of execution
+
+      var data = {
+          // ...
+      };
+
+      console.log(objectSerialize(data)); // Ah, looks cleaner.
+    #+END_SRC
+
+    We successfully removed those wonky parenthesis but how else can
+    compose help us in our journey of better code?
+
+*** Examples of =compose=
+
+    Let's get acquainted with our new friend, make it your BFF if you
+    can.
+
+    #+BEGIN_SRC javascript
+      // Mathematical Examples
+      var square = function (n) { return n * n; },
+          increment = function (n) { return n + 1; },
+          decrement = function (n) { return n - 1; },
+          display = function (n) { console.log(n); return n; };
+
+      var nextSquare = compose(square, increment),
+          incrementTwice = compose(increment, increment),
+          addZero = compose(decrement, increment),
+          displaySquare = compose(display, square);
+   #+END_SRC
+
+   Composing is better when you start using it with currying. But for
+   now, how do we compose more than two functions?
+
+** Improving =compose=
+
+   So how do we compose functions all the way to the moon?
+
+   #+BEGIN_SRC javascript
+     // Three functions
+     var escapeHtml = function (text) { /* ... */ },
+         wrapAsText = function (text) { /* ... */ },
+         wrapInDiv = function (text) { /* ... */ };
+
+     var data = ['5 Centimeters Per Second', 'Garden Of Words'];
+
+     // Plural compose, composes.
+     var htmlizer = composes( // Three compositions
+         wrapInDiv,
+         wrapAsText,
+         escapeHtml); // Do note, that this seems declarative on the process
+
+     // Hypothetical scenario in converting a list into Html text
+     console.log(data
+                 .map(htmlizer)
+                 .join('\n'));
+   #+END_SRC
+
+   First, we go back to our old friends
+
+*** Some Things First
+
+    Let's implement a few things to improve the readability of our grand
+    =composes=
+
+    #+BEGIN_SRC javascript
+      // Returns an reversed version  of the list
+      var reverse =  function (xs) {
+          var nxs = xs.slice(); // Shortcut for copying an array
+          nxs.reverse(); // Mutates the array
+
+          return nxs;
+      };
+
+      // Returns the first element of the list
+      var first = function (xs) {
+          return get(0,  xs); // or just xs[0] if you are in a hurry
+      }
+
+      // Likewise the rest of the lements of the list
+      var rest = function (xs) {
+          return xs.slice(1);
+      };
+
+      // Just a reduce with the initial value being the first value in the list
+      var reduceFirst = function (oper, xs) {
+          var initialValue = first(xs),
+            otherValues = rest(xs);
+
+          return reduce(oper, initialValue, otherValues);
+      };
+    #+END_SRC
+
+*** One More Thing
+
+    I prefer to read left to right instead of right to left with my
+    function pipeline.
+
+    #+BEGIN_SRC javascript
+      var pipe = function (first, next) {
+          return compose(next, first);
+      };
+
+      var splitWords = function (sentence) { return text.split(''); },
+          splitParagraphs = function (doc) { return text.split('\n'); };
+
+      // Originally
+      var getWords = compose(splitWords, splitParagraphs);
+
+      // Really, notice the sequence is read left to right
+      var getWords2 = pipe(splitParagraphs, splitWords);
+    #+END_SRC
+
+    This is just =compose= with the arguments reversed which might be a
+    small thing but helps in readability, just my prefrence anyway.
+
+*** Implementing =composes=
+
+    With that out of the way, we simply use =reduceRight= and =pipe=
+    in one master stroke
+
+    #+BEGIN_SRC javascript
+      var composes = function (/* fs */) {
+          var fs = [].slice.call(arguments);
+
+          // You can use compose instead of pipe but you would have to reverse the arguments
+          return reduceFirst(pipe, reverse(fs));
+      };
+    #+END_SRC
+
+    It is just basically starting at the end and composing all the way
+    back. That's how easy it is to implement =composes=.
+
+*** Equivalently =pipes=
+
+    Just for the sake of symmetry.
+
+    #+BEGIN_SRC javascript
+      var pipes = function (/* fs */) {
+          var fs = [].slice.call(arguments);
+
+          return reduceFirst(pipe, fs); // This is just without the reverse
+      }
+    #+END_SRC
+
+    Now let's see how they fit together.
+
+*** Checking Out =composes=
+
+    Let's check it out.
+
+    #+BEGIN_SRC javascript
+      var twice = function (n) { return n * 2; },
+          half = function (n) { return n / 2; },
+          increment = function (n) { return n + 1; };
+
+      var sequence = composes(half, twice, increment);
+
+      var sequence2 = pipes(increment, twice, half, twice);
+
+      var sequence3 = pipes( // Preferred way of writing
+          increment,
+          twice,
+          half,
+          twice
+      );
+    #+END_SRC
+
+    Viola, we can compose as much as we want. But where does this leave us?
+
+** Function Pipelines
+
+   It's not the fact that you use =compose= or =pipe=, but rather that
+   you want your code to be a single and straight process.
+
+   For example, displaying data in html. The process you want is.
+
+   - Source
+   - Map
+   - Render
+
+   But we tend to diverge from this as we add more features. The point
+   is you want to maintain the integrity of the process.
+
+** Avoiding Ifs With Composition
+
+   Let's have another case review. Given a list of employees and there
+   salary, let's compute their take home pay.
+
+   #+BEGIN_SRC javascript
+     var codeCats = [
+         { name: 'Mr. Muffin', salary: 100, gender: 'male'},
+         { name: 'Ms. Fuzbudget', salary: 50, gender: 'female'}
+     ];
+
+     var payComputer = function (codeCat) {
+         var pay = codeCat.salary / 2;
+
+         return set('pay', pay, codeCat);
+     };
+
+     console.log(codeCats.map(payComputer));
+   #+END_SRC
+
+   All is fuzzy and warm
+
+*** Gender Inequality
+
+    Now what if every female employee gets paid 50% more due to a
+    goverment law. What do you do to make it right?
+
+    #+BEGIN_SRC javascript
+      var codeCats = [
+          { name: 'Mr. Muffin', salary: 100, gender: 'male'},
+          { name: 'Ms. Fuzbudget', salary: 50, gender: 'female'}
+      ];
+
+      var payComputer = function (codeCat) {
+          var pay = codeCat.salary / 2;
+
+          var newerPay = codeCat.gender === 'female' ? pay * 1.5 : pay;
+
+          return set('pay', newerPay, codeCat);
+      };
+
+      console.log(codeCats.map(payComputer));
+    #+END_SRC
+
+    Not a problem, but what if you can't modify =payComputer= because
+    it's a third party shiznit? Or what if there is another law, are we
+    going to add another if?
+
+    You know where this is going.
+
+*** Composition To The Rescue
+
+    Let's use composition to make the code cleaner.
+
+    #+BEGIN_SRC javascript
+      var codeCats = [
+          { name: 'Mr. Muffin', salary: 100, gender: 'male'},
+          { name: 'Ms. Fuzbudget', salary: 50, gender: 'female'}
+      ];
+
+      var femalePayRaise = function (codeCat) {
+          var basePay = codeCat.pay; // Must already be paid
+
+          return set('pay', codeCat.gender === 'female' ? basePay * 1.5 : basePay, codeCat);
+      };
+
+      var payComputer = compose( // Process is maintained
+          femalePayRaise,
+          function _originalComputer(codeCat) {
+              var pay = codeCat.salary / 2;
+
+              return set('pay', newerpay, codeCat);
+          });
+
+      console.log(codeCats.map(payComputer)); // Still well
+
+    #+END_SRC
+
+    We retain the original intent and managed complexity.
+
+*** Reflection: Compose Behaviors
+
+    Although the example is quite contrived, the main point is to avoid
+    complexity and maintain the simplicity of the process.
+
+    The thinking style should be a composition pipeline. A straight flow
+    is better than a branching sewer.
+
+    As a tip, whenever there is a new functionality or rule, consider
+    composition or the like to manage the complexity.
+
+** Reflection: =composes=
+
+   So we just implemented one of the cornerstones of functional
+   programming and it wasn't complicated. All we wanted was to remove
+   the dirty parenthesis, amazing.
+
+   Let's go learn the complimentary technique for composition.
+
+** Learning To Curry
+
+   *Currying* is a nice functional idea to sweeten composition
+
+   Consider this multiplication function, what if we want the first
+   argument to be preset.
+
+   #+BEGIN_SRC javascript
+     var multiply = function (x, y) { return x * y; }
+
+     // What if we want have the following?
+     var multiplyByTwo = function (y) { return multiply(2, y); },
+         multiplyByFive = function (y) { return multiply(5, y); };
+
+     // There is a sort of duplication here. How about?
+     var multiplyPreset = function (x) { // Neat little trick
+         return function (y) { // Return a function where the first argument is preset
+             return multiply(x, y); // Execute the actual function with the arguments
+         };
+     };
+
+     // Same as above but notice we removed the noise in declaring the functions?
+     var multiplyWithTwo = multiplyPreset(2),
+         multiplyWithFive = multiplyPreset(5);
+
+     console.log(multiplyWithFive(4)); // out: 20
+     console.log(multiplyWithTwo(2)); // out: 4
+   #+END_SRC
+
+*** The Neat Trick
+
+    Let's have another example with a function that takes three arguments
+
+    #+BEGIN_SRC javascript
+      // Consider an function that add triples
+      var addTriple = function (x, y, z) { return x + y + z; };
+
+      // Let's repeat the neat little trick
+      var addTriplePreset = function (x) {
+          return function (y) {
+              return function (z) { // Looks kinda coo
+                  return addTriple(x, y, z);
+              };
+          };
+      };
+
+      var addTen = addTriplePreset(10);
+
+      console.log(addTen(4, 5)); // out: 19
+
+      var addTenAndFive = addTriplePreset(10)(5);
+
+      console.log(addTenAndFive(6)); // out: 21
+    #+END_SRC
+
+*** Naming The Trick
+
+    But this seems to be a function behavior, not logic. Maybe we can
+    separate this behavior.
+
+    #+BEGIN_SRC javascript
+      var curry = function (f) { // Thanks Haskell Curry
+          /* ??? */
+      };
+
+      // Let's curry our get function
+      // get takes the key and the object
+      var getId = curry(get)('id'); // or function (object) { return get('id', object); }
+
+      var users = [
+          { id: 1, username: 'Beethoven'},
+          { id: 2, username: 'Mozart'},
+          { id: 3, username: 'Ravel'}
+      ];
+
+      console.log(users.map(getId)); // out: [1,2,3];
+
+      console.log(users.map(function _getId(user) { // Compare with this
+          return get('id', user);
+      }));
+    #+END_SRC
+
+    Let's implement the easy version
+
+*** Currying For Two
+
+    Copy pasting our trick from before
+
+    #+BEGIN_SRC javascript
+      var curry = function (f) {
+          return function (x) {
+              return function (y) {
+                  return f.apply(null, [x, y]); // or f(x, y);
+              }
+          }
+      };
+    #+END_SRC
+
+    This is enough but what if you want to implement it for three
+    arguments or four? You could copy paste the same definitions over
+    and over.
+
+    But there is a better way.
+
+*** Implementing =curry=
+
+    This is the most fun and challenging to code but the main concept is
+    to keep returning a function until enough arguments have been
+    supplied and then invoke it.
+
+    #+BEGIN_SRC javascript
+      var curry = function _recursiveCurry(f) {
+          // Get the number of arguments in a function
+          var numberOfArgs = f.length;
+
+          // An helper function to curry the original function
+          var currier = function _recursiveCurry(previousArgs) {
+              return function _curried(/* currentArgs */) {
+                  var currentArgs = [].slice.call(arguments),
+                      newArgs = previousArgs.concat(currentArgs);
+
+                  // If there is enough args, invoke the function
+                  if (newArgs.length >= numberOfArgs) {
+                      return f.apply(null, arguments);
+                  } else { // If there is not enough args yet, keep currying
+                      return _recursiveCurry(newArgs);
+                  }
+              };
+          };
+
+          return currier([]); // Start recursion with no arguments
+      };
+    #+END_SRC
+
+    This is the only thing that looks complicated, I swear.
+
+*** Using =curry=
+
+    Just a contrived use of the generic =curry=
+
+    #+BEGIN_SRC javascript
+      var computeName = curry(function _fullName(firstName, lastName) {
+          return firstName + ' ' + lastName;
+      });
+
+      var doctorName = computeName('Doctor');
+
+      console.log(doctorName('Death')); // out: Doctor Death
+      console.log(doctorName('Who')); // out: Doctor Who
+
+      var johnName = computeName('John');
+
+      console.log(johnName('Marshton')); // out: John Marshton
+      console.log(johnName('Doe')); // out: John Doe
+
+      // Cute tricks with it, but don't do this
+      console.log(computeName('Linus')()('Van Pelt')); // out: Linus Van Pelt
+      console.log(computeName()()()('Linus', 'Van Pelt')); // out: Linus Van Pelt
+    #+END_SRC
+
+    But where does this fit in with =compose=?
+
+** The Real Trick
+
+   Curry a function until it has one argument left which you can pass
+   through a composition or mapping pipeline.
+
+   #+BEGIN_SRC javascript
+     var heroes = [
+         { name: 'Yang Xiao Long', team: 'RWBY'},
+         { name: 'Ruby Rose', team: 'RWBY' },
+         { name: 'Pyrrha Nikos', team: 'JNPR'}
+     ];
+
+     // Remember set takes three arguments: key, value, object
+     var setHealth = curry(set)('hp', 100),
+         setScore = curry(set)('score', 0);
+
+     console.log(heroes
+                 .map(setHealth)
+                 .map(setScore));
+
+     // or if you care about performance
+     var setStats = compose(setHealth, setScore); // or pipe(setScore, setHealth);
+
+     console.log(heroes.map(setStats));
+     // Did I declare a function??
+   #+END_SRC
+
+   Doesn't it look nice? We just created new functions from old ones and
+   given them more specific uses.
+
+*** Currying And Filtering
+
+    How about using it in conjuction with filter? Given a list of
+    heroes, I want to filter the intelligence type heroes in the list or team.
+
+    #+BEGIN_SRC javascript
+      var heroes = [
+          { name: 'Pudge', type: 'STR', kills: 15},
+          { name: 'Puck', type: 'INT', kills: 13},
+          { name: 'Lich King', type: 'INT', kills: 9}
+          { name: 'Razor', type: 'AGI', kills: 4},
+          { name: 'Ogre Magi', type: 'STR', kills: 1}
+      ];
+
+      var eq = curry(function _equals(a, b) {
+          return a === b;
+      });
+
+      var getType = curry(get)('type'),
+          isInt = eq('INT');
+
+      var isIntType = pipe(getType, isInt);
+
+      console.log(heroes.filter(isIntType));
+
+      // compare with, I leave it to you which is better
+      console.log(heroes.filter(function _isIntType(hero) {
+          return heroes.type === 'INT';
+      }));
+    #+END_SRC
+
+    Still cool
+
+** Reflection: =curry=
+
+   Another cornerstone has been implemented. We now have the ability to
+   create functions from old one.
+
+   But the real question is: are there more tricks like this?
+** 4th Virtue: Everything Should Be A Function
+
+   With higher ordered concepts like composition and currying, if
+   everything is a function then all of them benefit from higher order
+   abstractions.
+
+   There are other higher order functions that sweeten the deal.
+
+   Now you know why =get= and =set= are functions so that they can be
+   curried and composed.
+
+** Currying Our Old Trick
+
+   Tying this back to our old previous tools
+
+   #+BEGIN_SRC javascript
+     var characters = [
+         { id: 314, name: 'Dilbert', source: 'Dilbert'},
+         { id: 319, name: 'Catbert', source: 'Dilbert'},
+         { id: 325, name: 'Sally', source: 'Peanuts'}
+     ];
+
+     var getId = curry(get)('id'),
+         getIds = curry(map)(getId); // Currying our implementation
+
+     console.log(getIds(characters)); // out: [314, 319, 325]
+
+     var isFromPeanuts = curry(get)('id'),
+         fromPeanuts = curry(filter)(isFromPeanuts);
+
+     console.log(fromPeanuts(characters)); // out: [{id:325,name:'Sally',source:'Peanuts'}]
+
+     var getIdByPeanuts = pipe(isFromPeanuts, getIds);
+
+     console.log(getIdByPeanuts(characters)); // out: [325]
+   #+END_SRC
+
+   If this did not impress you, I don't know what will.
+
+** Reflection: =curry=
+
+   We implemented one of the nice tricks of functional programming, we
+   can now extract functions from old one by presetting the
+   arguments.
+
+   But the idea is that combining functions is really not that hard. How
+   many more ways can we play with functions?
+
+** Quick Review
+
+   So those are the fundamental tricks.
+
+   - =compose=, =pipe= and =curry= are fun tools to implement and have
+   - Gluing functions are easy
+   - Making new functions from old
+
+* At The End Of It All
+
+  Did the code look cleaner with these concepts?
+
+  That is where it matters.
+
+* JavaScript Is Functional
+
+  End of the line. Wrap it up fool. I hope you found
+
+** JavaScript Is Awesome
+
+   JavaScript is really cool for me because of the following.
+
+   - First class functions
+   - Closures
+   - Function scoped
+
+   That's really it.
+
+   (I could say the same thing about *Python* which holds a special place
+   in my heart.)
+
+** Reflection: Refactoring
+
+   You could have noticed that all the machinery we built can be written
+   by hand, a simple function and a desire to make code cleaner.
+
+   There are a lot of other things you can do with functions, really a
+   lot more I didn't mention or rather you can discover like uncharted
+   territory.
+
+   *Use your imagination.*
+
+** The Power Of Functions In JavaScript
+
+   If you forgot what I said, here it is.
+
+   - Use =map=, =filter=, and =reduce=
+   - Learn =compose= and =curry=
+   - Think input and output, processes not details
+   - Avoid for loops and ifs
+   - Hide implementation details
+   - *Have fun*
+
+** What I Didn't Say
+
+   Compare JavaScript with Haskell if you want to see the light
+
+   - Partial Application
+   - Closures
+     The chapter I removed from this presentation
+   - Types
+   - Monads
+   - Functors
+   - Patterns
+   - So much
+
+** Future Of Functional Programming
+
+   I am not an prophet but...
+
+   - Functional Reactive Programming
+   - React & React Native
+   - Clojure / ClojureScript
+   - RxJs
+   - Elm
+   - Java 8: Lambdas
+
+   Really, it's just a good time to learn a new paradigm to widen your
+   perspective.
+
+* Lastly
+
+  No matter what I say or what paradigm is out there. Good code is
+  something you work for. There is really no silver bullet.
+
+  Don't be a zealot. OOP and FP have their places in design and
+  coding. Use your judgment which works for the correct situation.
+
+  But really in JavaScript, I find FP to be really easy to work with
+  than its Prototypical nature.
+
+* Now GTFO
+
+  Thank you for letting me waste your time. I hope you learned something
+  or even just the idea.
+
+* References
+
+** Books
+
+   - [[http://shop.oreilly.com/product/9780596517748.do][Javascript: The Good Parts]]
+   - [[http://shop.oreilly.com/product/0636920028857.do][Functional JavaScript]]
+   - [[http://shop.oreilly.com/product/9781784398224.do][Functional Programming In JavaScript]]
+
+** Libraries
+
+   - [[https://lodash.com/][lodash]] - a good functional library
+   - [[http://jquery.com/][jquery]] - not obvious but it really is a monad
+   - [[https://github.com/Reactive-Extensions/RxJS][rxjs]] - functional reactive programming library
+
+** Languages
+
+   - [[https://www.haskell.org/][haskell]] - the language drug to functional programming
+   - [[http://clojure.org/][clojure]] - the functional lisp since Scheme
+   - [[https://github.com/clojure/clojurescript][clojurescript]] - the lisp for javascript
+   - [[http://elm-lang.org/][elm]] - the functional javascript
