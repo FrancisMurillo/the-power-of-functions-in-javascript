@@ -1690,32 +1690,12 @@ At <b>Manila, JavaScript #06</b>
 <b><a href="https://github.com/FrancisMurillo/the-power-of-functions-in-javascript">https://github.com/FrancisMurillo/the-power-of-functions-in-javascript</a></b>
 </p>
 
+
 </section>
 </section>
 <section>
 <section id="slide-orgheadline2">
-<h2 id="orgheadline2">If It Is After April. 14</h2>
-<p>
-This is the original source of the presentation, the revised cut I
-used for the presentation is the <b>presentation-shortened.org</b>.
-</p>
-
-<p>
-I had hoped to be able to give this in 30 minutes but I failed to
-realize that I think faster than I talk, showed too much code and
-tried to discuss a wide range. A valiant effort.
-</p>
-
-<p>
-I hope this presentation will help you write good code and with a
-different lens. Thanks.
-</p>
-
-</section>
-</section>
-<section>
-<section id="slide-orgheadline3">
-<h2 id="orgheadline3">Foolish Assumptions</h2>
+<h2 id="orgheadline2">Foolish Assumptions</h2>
 <ul>
 <li>You know the basics of JavaScript syntax</li>
 <li>I am talking about JavaScript in the browser</li>
@@ -1726,8 +1706,8 @@ different lens. Thanks.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline4">
-<h2 id="orgheadline4">A Little Background</h2>
+<section id="slide-orgheadline3">
+<h2 id="orgheadline3">A Little Background</h2>
 <p>
 Just a mediocre software developer.
 </p>
@@ -1735,8 +1715,8 @@ Just a mediocre software developer.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline8">
-<h2 id="orgheadline8">Before We Begin</h2>
+<section id="slide-orgheadline7">
+<h2 id="orgheadline7">Before We Begin</h2>
 <blockquote nil>
 <p>
 Judge a man by his questions rather than his answers
@@ -1752,8 +1732,8 @@ Who here thinks <b>JavaScript</b> (in the browser) sucks?
 </p>
 
 </section>
-<section id="slide-orgheadline5">
-<h3 id="orgheadline5">JavaScript Sucks</h3>
+<section id="slide-orgheadline4">
+<h3 id="orgheadline4">JavaScript Sucks</h3>
 <p>
 Where do I begin?
 </p>
@@ -1768,17 +1748,17 @@ Where do I begin?
 
 </ul>
 
-<p class="fragment">
+<p>
 But I am not here to bash on the language.
 </p>
 
-<p class="fragment">
+<p>
 How do we write good code in a (sucky but awesome) language?
 </p>
 
 </section>
-<section id="slide-orgheadline6">
-<h3 id="orgheadline6">Writing <b>Good Code</b> For JavaScript</h3>
+<section id="slide-orgheadline5">
+<h3 id="orgheadline5">Writing <b>Good Code</b> For JavaScript</h3>
 <p>
 How do write code that is&#x2026;
 </p>
@@ -1802,8 +1782,8 @@ since ancient times
 </p>
 
 </section>
-<section id="slide-orgheadline7">
-<h3 id="orgheadline7">Function</h3>
+<section id="slide-orgheadline6">
+<h3 id="orgheadline6">Function</h3>
 <p>
 The building blocks of programs
 </p>
@@ -1819,8 +1799,8 @@ The building blocks of programs
 </section>
 </section>
 <section>
-<section id="slide-orgheadline10">
-<h2 id="orgheadline10">Functions In JavaScript</h2>
+<section id="slide-orgheadline9">
+<h2 id="orgheadline9">Functions In JavaScript</h2>
 <blockquote nil>
 <p>
 The best thing about JavaScript is its implementation of functions. It
@@ -1839,33 +1819,32 @@ in JavaScript first.
 </p>
 
 </section>
-<section id="slide-orgheadline9">
-<h3 id="orgheadline9">Things You Should Know</h3>
+<section id="slide-orgheadline8">
+<h3 id="orgheadline8">Things You Should Know</h3>
 <p>
 Just a brief review of the following.
 </p>
 
 <ul>
 <li>Functions</li>
-<li><code>this</code> and <code>arguments</code> keyword</li>
+<li><code>arguments</code> keyword</li>
 <li><code>call</code> and <code>apply</code> function</li>
-<li>Closure</li>
-<li>Recursion</li>
+<li>Closure / Function Scope</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline16">
-<h2 id="orgheadline16">Functions</h2>
+<section id="slide-orgheadline14">
+<h2 id="orgheadline14">Functions</h2>
 <p>
 The bread and butter of programmers
 </p>
 
 </section>
-<section id="slide-orgheadline11">
-<h3 id="orgheadline11">Declaring Functions</h3>
+<section id="slide-orgheadline10">
+<h3 id="orgheadline10">Declaring Functions</h3>
 <p>
 There are two primary ways to declare a function.
 </p>
@@ -1881,17 +1860,12 @@ There are two primary ways to declare a function.
 <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">greetPatty</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> _greetPatty() {
     <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #ffa07a;">'Hello Sir'</span>;
 };
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Function Constructor</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">We never ever talk or even write this as this is as evil as eval()</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">This is just for completion</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">greetLinus</span> = <span style="color: #20b2aa; font-weight: bold;">new</span> <span style="color: #9370db;">Function</span> (<span style="color: #ffa07a;">"return 'Sweet Baboo';"</span>);
 </pre>
 </div>
 
 </section>
-<section id="slide-orgheadline12">
-<h3 id="orgheadline12">Invoking Functions</h3>
+<section id="slide-orgheadline11">
+<h3 id="orgheadline11">Invoking Functions</h3>
 <p>
 There's three known ways to call or invoke a function.
 </p>
@@ -1916,8 +1890,8 @@ add.apply(<span style="color: #1e90ff;">null</span>, [1, 2]);
 </div>
 
 </section>
-<section id="slide-orgheadline13">
-<h3 id="orgheadline13">Returning Values</h3>
+<section id="slide-orgheadline12">
+<h3 id="orgheadline12">Returning An Output</h3>
 <p>
 <code>return</code> is the output of the function. If there is no <code>return</code>, an
 implicit <code>undefined</code> is the output.
@@ -1939,51 +1913,11 @@ console.log(noReturn()); <span style="color: #cd853f;">// </span><span style="co
 </div>
 
 </section>
-<section id="slide-orgheadline15">
-<h3 id="orgheadline15">Gotcha: Function Hoisting</h3>
+<section id="slide-orgheadline13">
+<h3 id="orgheadline13">Convention</h3>
 <p>
-It is the compiler putting variable/function declarations on top(without your
-consent)
-</p>
-
-<p>
-Consider this snippet consisting of a <b>function statement</b>
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript">doWeirdStuff()
-
-<span style="color: #20b2aa; font-weight: bold;">function</span> <span style="color: #00ff7f;">doWeirdStuff</span>() {
-    console.log(<span style="color: #ffa07a;">'Wait, this is declared after it is invoked.'</span>);
-}
-</pre>
-</div>
-
-<p>
-Compare this with the <b>function expression</b> equivalent
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript">doWeirdStuff()
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">doWeirdStuff</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> theWeirdStuff() {
-    console.log(<span style="color: #ffa07a;">'This is the same right? It should also work. Right?'</span>);
-}
-</pre>
-</div>
-
-<p>
-The first one executes, while the other one gives a <b>undefined type error</b>.
-</p>
-
-</section>
-<section id="slide-orgheadline14">
-<h4 id="orgheadline14">Tip</h4>
-<p>
-Prefer <b>function expression</b> over <b>function statement</b> to avoid
-hoisting.
+For this presentation, the preferred way of declaring a function is a
+<b>function expression</b> to avoid function hoisting.
 </p>
 
 <div class="org-src-container">
@@ -1997,58 +1931,29 @@ hoisting.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline23">
-<h2 id="orgheadline23"><code>this</code> and <code>arguments</code></h2>
+<section id="slide-orgheadline17">
+<h2 id="orgheadline17"><code>arguments</code></h2>
 <p>
-Every function has two implicit variable: <b>this</b> and <b>arguments</b>
+Every function has an implicit variable <b>arguments</b>
 </p>
 
 <div class="org-src-container">
 
 <pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">MyModule</span> = {
-    <span style="color: #00ff7f;">whatIsThis</span>: <span style="color: #20b2aa; font-weight: bold;">function</span> () {
-        <span style="color: #cd853f;">// </span><span style="color: #cd853f;">What is?</span>
-        console.log(<span style="color: #1e90ff;">this</span>);
-
+    <span style="color: #00ff7f;">whatIsThis</span>: <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #cd853f;">/* </span><span style="color: #cd853f;">args */</span>) {
         <span style="color: #cd853f;">// </span><span style="color: #cd853f;">And what is</span>
         console.log(<span style="color: #1e90ff;">arguments</span>);
     }
 }
 
 MyModule.whatIsThis(1, 2, 3, 4);
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out(this): MyModule</span>
 <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out(arguments): [1, 2, 3, 4]</span>
 </pre>
 </div>
 
 </section>
-<section id="slide-orgheadline17">
-<h3 id="orgheadline17">Just <code>this</code></h3>
-<p>
-It is just simply the method's object
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">MyObject</span>= {
-
-    myValue: <span style="color: #ffa07a;">'Nyan Cat'</span>,
-
-    <span style="color: #00ff7f;">myMethod</span>: <span style="color: #20b2aa; font-weight: bold;">function</span> () {
-        console.log(<span style="color: #1e90ff;">this</span>);
-        console.log(<span style="color: #1e90ff;">this</span>.myValue);
-    }
-};
-
-MyObject.myMethod();
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out(this): { myValue: 'Nyan Cat', myMethod: function ()}</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out(this.myValue): 'Nyan Cat'</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline18">
-<h3 id="orgheadline18">My <code>arguments</code></h3>
+<section id="slide-orgheadline15">
+<h3 id="orgheadline15">My <code>arguments</code></h3>
 <p>
 An array-like object containing the arguments
 </p>
@@ -2064,145 +1969,38 @@ An array-like object containing the arguments
 
 showMeTheEvidence(1, 2, 3) <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: [1,2,3]</span>
 showMeTheEvidence(<span style="color: #ffa07a;">'This'</span>, <span style="color: #ffa07a;">'is'</span>, <span style="color: #ffa07a;">'nuts'</span>) <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: ['This', 'is', 'nuts']</span>
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Not enough arguments? That' weirdly okay. Javascript is free</span>
-showMeTheEvidence({ x: 1 }, <span style="color: #1e90ff;">true</span>);
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out([a, b, c]): [{x:1}, true, undefined]</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out(arQguments): [{x:1}, true]</span>
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Too many arguments? That's free of charge too</span>
-showMeTheEvidence(<span style="color: #1e90ff;">true</span>, <span style="color: #1e90ff;">false</span>, 0, 1)
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out([a, b, c]): [true, false, 0]</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out(arguments): [true, false, 0, 1]</span>
 </pre>
 </div>
 
 </section>
-<section id="slide-orgheadline20">
-<h3 id="orgheadline20">Gotcha: <code>arguments</code> is not an array</h3>
+<section id="slide-orgheadline16">
+<h3 id="orgheadline16">Convention</h3>
 <p>
-It is not an array
+Whenever I depend on the <code>arguments</code> keyword, I put a comment on the
+function header what the local variable name would be and convert it
+into an array using <code>Array.prototype.slice.call(arguments)</code> or the
+shorter  <code>[].slice.call(arguments)</code>.
 </p>
 
 <div class="org-src-container">
 
 <pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">extraRicePlease</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #cd853f;">/* </span><span style="color: #cd853f;">args */</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">args</span> = <span style="color: #1e90ff;">arguments</span>;
+    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">args</span> = [].slice.call(<span style="color: #1e90ff;">arguments</span>); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">This is awkward</span>
 
-    args.push(<span style="color: #ffa07a;">'Extra rice'</span>);
-
-    console.log(args);
-};
-
-extraRicePlease(<span style="color: #ffa07a;">'BBQ'</span>, <span style="color: #ffa07a;">'Ice Tea'</span>);
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">expected: ['BBQ', 'ice Tea', 'Extra Rice']</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: arguments has no method push</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline19">
-<h4 id="orgheadline19">Tip</h4>
-<p>
-Convert <code>arguments</code> to an array using <code>Array.prototype.slice.call(arguments)</code>.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">extraRicePlease</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #cd853f;">/* </span><span style="color: #cd853f;">args */</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">args</span> = Array.<span style="color: #1e90ff;">prototype</span>.slice.call(<span style="color: #1e90ff;">arguments</span>); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Why must we do this</span>
-
-    args.push(<span style="color: #ffa07a;">'Extra rice'</span>); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Now it works</span>
+    args.push(<span style="color: #ffa07a;">'Extra rice'</span>); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Adding arguments</span>
 
     console.log(args);
 };
 
-extraRicePlease(<span style="color: #ffa07a;">'BBQ'</span>, <span style="color: #ffa07a;">'Ice Tea'</span>);
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: ['BBQ', 'Ice Tea', 'Extra Rice']</span>
-</pre>
-</div>
-
-<p>
-Use can also use the shorter form <code>[].slice.call(arguments)</code>.
-</p>
-
-</section>
-<section id="slide-orgheadline22">
-<h3 id="orgheadline22">Gotcha: Function Scoped</h3>
-<p>
-Check out this sketch that counts <b>something</b> globally and locally.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">Counter</span> = {
-    globalCounter: 0,
-
-    <span style="color: #00ff7f;">createCounter</span>: <span style="color: #20b2aa; font-weight: bold;">function</span>() {
-        <span style="color: #20b2aa; font-weight: bold;">return</span> {
-            localCounter: 0,
-
-            <span style="color: #00ff7f;">increment</span>: <span style="color: #20b2aa; font-weight: bold;">function</span>() {
-                <span style="color: #1e90ff;">this</span>.globalCounter += 1;
-                <span style="color: #1e90ff;">this</span>.localCounter += 1;
-
-                <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #1e90ff;">this</span>.localCounter;
-            }
-        }
-    }
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">buttonCounter</span> = Counter.createCounter(),
-    ajaxCounter = Counter.createCounter();
-
-console.log(buttonCounter.increment()); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 1</span>
-console.log(ajaxCounter.increment()); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 1</span>
-
-
-console.log(Counter.globalCounter);
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">expected: 2;</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 0;</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline21">
-<h4 id="orgheadline21">Tip</h4>
-<p>
-Be careful using <code>this</code>. If you use functions within functions or
-objects within objects, it is safer to save it in a variable
-preferrably <code>that</code> or the Pythonic <code>self</code>. Likewise for <code>arguments</code>
-but very uncommon.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">Counter</span> = {
-    globalCounter: 0,
-
-    <span style="color: #00ff7f;">createCounter</span>: <span style="color: #20b2aa; font-weight: bold;">function</span>() {
-        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">that</span> = <span style="color: #1e90ff;">this</span>; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Store the parent refrence</span>
-
-        <span style="color: #20b2aa; font-weight: bold;">return</span> {
-            localCounter: 0,
-
-            <span style="color: #00ff7f;">increment</span>: <span style="color: #20b2aa; font-weight: bold;">function</span>() {
-                that.globalCounter += 1; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Correct reference</span>
-                <span style="color: #1e90ff;">this</span>.localCounter += 1;
-
-                <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #1e90ff;">this</span>.localCounter;
-            }
-        }
-    }
-};
+extraRicePlease(<span style="color: #ffa07a;">'BBQ'</span>, <span style="color: #ffa07a;">'Ice Tea'</span>); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: ['BBQ', 'Ice Tea', 'Extra Rice']</span>
 </pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline28">
-<h2 id="orgheadline28"><code>f.call()</code> and <code>f.apply()</code></h2>
+<section id="slide-orgheadline19">
+<h2 id="orgheadline19"><code>f.call()</code> and <code>f.apply()</code></h2>
 <p>
 Every function has the method <code>call</code> and <code>apply</code> to invoke them functionally
 </p>
@@ -2220,144 +2018,31 @@ console.log(fullName(<span style="color: #ffa07a;">'Francis'</span>, <span style
 <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Using call() without the</span>
 console.log(fullName.call(<span style="color: #1e90ff;">null</span>, <span style="color: #ffa07a;">'Mr'</span>, <span style="color: #ffa07a;">'Robot'</span>)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 'Mr Robot'</span>
 
-
 <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Using apply()</span>
 console.log(fullName.apply(<span style="color: #1e90ff;">null</span>, [<span style="color: #ffa07a;">'Jake'</span>, <span style="color: #ffa07a;">'Dog'</span>])); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 'Jake Dog'</span>
 </pre>
 </div>
 
 </section>
-<section id="slide-orgheadline24">
-<h3 id="orgheadline24"><code>this</code> Argument</h3>
+<section id="slide-orgheadline18">
+<h3 id="orgheadline18">Convention</h3>
 <p>
-The first argument of <code>call</code> and <code>apply</code> sets the <code>this</code>
-keyword, this is more important for the OO style.
+<code>call</code> and <code>apply</code> will always have <code>null</code> as the first argument
+since we don't care about <code>this</code>.
 </p>
 
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">Mirror</span> = {
-    whoAmI: <span style="color: #ffa07a;">'Tyler Durden'</span>,
-
-    <span style="color: #00ff7f;">whoAreYou</span>: <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">prefix</span>) {
-        console.log(prefix + <span style="color: #1e90ff;">this</span>.whoAmI);
-    }
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">Bad</span> = {
-    whoAmI: <span style="color: #ffa07a;">'Heisenberg'</span>
-};
-
-Mirror.whoAreYou(<span style="color: #ffa07a;">'I am '</span>); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 'I am Tyler Durden'</span>
-
-Mirror.whoAreYou.call(Bad, <span style="color: #ffa07a;">'You are '</span>); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 'You are Heisenberg'</span>
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">VeryBad</span> = {
-    whoAmI: <span style="color: #ffa07a;">'You only need to know mine'</span>
-};
-
-Mirror.whoAreYou.apply(VeryBad, [<span style="color: #ffa07a;">'I do not need to know your name'</span>]); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: awesome</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline25">
-<h3 id="orgheadline25">Practical <code>this</code></h3>
 <p>
-Some practical uses of setting the <code>this</code> argument.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">showcaseThis</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #cd853f;">/* </span><span style="color: #cd853f;">args */</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">args</span> = <span style="color: #1e90ff;">arguments</span>;
-
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Case: Converting arguments to an array, reasonable</span>
-    console.log(Array.<span style="color: #1e90ff;">prototype</span>.slice.call(<span style="color: #1e90ff;">this</span>, args));
-};
-
-showcaseThis(<span style="color: #ffa07a;">'Clockwork'</span>, <span style="color: #ffa07a;">'Orange'</span>);
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: ['Clockwork', 'Orange']</span>
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Case: Invoking a "class"/prototype method on an instance</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Why not just "Beethoven".toUpperCase()?</span>
-console.log(String.<span style="color: #1e90ff;">prototype</span>.toUpperCase(<span style="color: #ffa07a;">"Beethoven"</span>));
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: BEETHOVEN</span>
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Easier to just ['Ode'],concat('to', 'Joy');</span>
-console.log(Array.<span style="color: #1e90ff;">prototype</span>.concat.call([<span style="color: #ffa07a;">'Ode'</span>],<span style="color: #ffa07a;">'to'</span>, <span style="color: #ffa07a;">'Joy'</span>));
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: ['Ode', 'to', 'Joy']</span>
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Case: Hacking an "private" variable</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Wait for it</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline27">
-<h3 id="orgheadline27">Gotcha: Missing <code>this</code></h3>
-<p>
-Consider this quaint way of invoking a method
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">Cat</span> = {
-    affection: 9007199254740992;, <span style="color: #cd853f;">// </span><span style="color: #cd853f;">It is at least over 9000</span>
-
-    <span style="color: #00ff7f;">pet</span>: <span style="color: #20b2aa; font-weight: bold;">function</span> _pettingTheAdorablePuspin() {
-        <span style="color: #20b2aa; font-weight: bold;">if</span> (<span style="color: #1e90ff;">this</span>.affection &gt; 50) {
-            console.log(<span style="color: #ffa07a;">'purr'</span>);
-        } <span style="color: #20b2aa; font-weight: bold;">else</span> {
-            console.log(<span style="color: #ffa07a;">'hiss'</span>);
-        }
-    }
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">petMethod</span> = Cat.pet;
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Working at the office</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Home and tired, I want to relieve stress. Must pet cat</span>
-
-petMethod();
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">expected: 'purr'</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 'hiss'</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline26">
-<h4 id="orgheadline26">Tip</h4>
-<p>
-Be aware if a function needs an object reference or not.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript">petMethod(); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 'hiss'</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Because this.affection is undefined</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">undefined &gt; 50 is false</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">This should be a type error!?</span>
-
-petMethod.call(Cat); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 'purr'</span>
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">If you know the object, then why not just invoke it directly</span>
-Cat.pet();
-</pre>
-</div>
-
-<p>
-For this presentation, we will not use <code>this</code> and invoke <code>call</code> and
-<code>apply</code> with null as the first argument whenever needed.
+<code>apply</code> is the more preferred way of calling functions if you don't
+know the arguments, and <code>call</code> if you do.
 </p>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline30">
-<h2 id="orgheadline30">Closure</h2>
+<section id="slide-orgheadline20">
+<h2 id="orgheadline20">Closure / Function Scope</h2>
 <p>
-Functions have access to variables to it's outer function.
+Inner functions have access to it's the variables of the outer function
 </p>
 
 <div class="org-src-container">
@@ -2384,148 +2069,11 @@ console.log(newFunction(100));
 </pre>
 </div>
 
-<p>
-We'll talk about this more later
-</p>
-
-</section>
-<section id="slide-orgheadline29">
-<h3 id="orgheadline29">Gotcha: Memory Leaks</h3>
-<p>
-Not really going to talk about this, but it exists.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript">setInterval(<span style="color: #20b2aa; font-weight: bold;">function</span> myLovelyWidget() {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">data</span> = []; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Possibly never garbage collected</span>
-
-    fetch(<span style="color: #ffa07a;">'someUrl'</span>) <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Promise like behavior</span>
-        .then(<span style="color: #20b2aa; font-weight: bold;">function</span> getAndRender(<span style="color: #9acd32;">newData</span>) {
-            data = newData;
-
-            <span style="color: #cd853f;">// </span><span style="color: #cd853f;">render new data</span>
-
-            <span style="color: #cd853f;">// </span><span style="color: #cd853f;">do something else</span>
-        });
-}, 1000);
-</pre>
-</div>
-
 </section>
 </section>
 <section>
-<section id="slide-orgheadline34">
-<h2 id="orgheadline34">Recursion</h2>
-<p>
-Calling a function over and over again
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #cd853f;">// </span><span style="color: #cd853f;">Naive quicksort</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">quicksort</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> _quicksorter(<span style="color: #9acd32;">xs</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">if</span> (xs.length &lt;= 1) { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Base cases</span>
-        <span style="color: #20b2aa; font-weight: bold;">return</span> xs
-    } <span style="color: #20b2aa; font-weight: bold;">else</span> <span style="color: #20b2aa; font-weight: bold;">if</span> (xs.length === 2) {
-        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">first</span> = xs[0],
-            last = xs[1];
-
-        <span style="color: #20b2aa; font-weight: bold;">return</span> first &lt;= last ? [first, last] : [last, first];
-    } <span style="color: #20b2aa; font-weight: bold;">else</span> { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Dividing the task</span>
-        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">pivot</span> = xs[0],
-            less = xs.filter(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">x</span>) { <span style="color: #20b2aa; font-weight: bold;">return</span> x &lt; pivot; }), <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Spoiler Alert</span>
-            more = xs.filter(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">x</span>) { <span style="color: #20b2aa; font-weight: bold;">return</span> x &gt; pivot; }),
-            equal = xs.filter(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">x</span>) { <span style="color: #20b2aa; font-weight: bold;">return</span> x === pivot; });
-
-        <span style="color: #20b2aa; font-weight: bold;">return</span> []
-            .concat(_quicksorter(less))
-            .concat(equal)
-            .concat(_quicksorter(more));
-    }
-};
-
-console.log(quicksort([4, 1, 2, 3])); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: [1, 2, 3, 4]</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline31">
-<h3 id="orgheadline31">Calling The Caller</h3>
-<p>
-Invoking the parent or calling function using the name given in the
-function declaration.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">factorial</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> _factorer(<span style="color: #9acd32;">n</span>) { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Notice the name in the function</span>
-    <span style="color: #20b2aa; font-weight: bold;">if</span> (n &lt;= 1) { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Base case</span>
-        <span style="color: #20b2aa; font-weight: bold;">return</span> 1;
-    } <span style="color: #20b2aa; font-weight: bold;">else</span> { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Induction case</span>
-        <span style="color: #20b2aa; font-weight: bold;">return</span> n * _factorer(n - 1); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Invoke the parent function</span>
-        <span style="color: #cd853f;">// </span><span style="color: #cd853f;">return n * factorial(n - 1); // Also okay but relies on external binding</span>
-    }
-};
-
-console.log(factorial(3)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 3 * 2 * 1 =&gt; 6</span>
-console.log(factorial(5)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 5 * 4 * 3 * 2 * 1 =&gt; 120</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline33">
-<h3 id="orgheadline33">Gotcha: Infinite Recursion</h3>
-<p>
-Be very careful within recursion as it can cause an infinite recursion with
-rogue or incorrect input.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">countDown</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> _counter(<span style="color: #9acd32;">n</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">if</span> (n === 0) { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Base case</span>
-        console.log(<span style="color: #ffa07a;">'Blast off!!'</span>);
-    } <span style="color: #20b2aa; font-weight: bold;">else</span> {
-        console.log(n);
-        counter(n - 1); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Recursion</span>
-    }
-};
-
-countDown(3);
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 3</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 2</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 1</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 'Blast off!!'</span>
-
-countDown(3.001); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Unhandled case</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 3.001</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 2.001</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 1.001</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 0.001 // Where's the smoke?</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: -0.999 // Wait... when is the rocket launching?</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: -1.999 // Houston, we have a problem</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline32">
-<h4 id="orgheadline32">Tip</h4>
-<p>
-Since JavaScript does not support functional programming up front,
-just be careful when choosing to implement a problem with recursion.
-</p>
-
-<p>
-For this presentation, I won't delve into recursion but for just
-know and remember you can do recursion&#x2026; with love and care.
-</p>
-
-</section>
-</section>
-<section>
-<section id="slide-orgheadline40">
-<h2 id="orgheadline40">The Power Of Functions In JavaScript</h2>
+<section id="slide-orgheadline25">
+<h2 id="orgheadline25">The Power Of Functions In JavaScript</h2>
 <blockquote nil>
 <p>
 Good design is not about making grand plans, but about taking things
@@ -2542,8 +2090,8 @@ At last, let's talk about functions.
 </p>
 
 </section>
-<section id="slide-orgheadline35">
-<h3 id="orgheadline35">Functional Programming In JavaScript</h3>
+<section id="slide-orgheadline21">
+<h3 id="orgheadline21">Functional Programming In JavaScript</h3>
 <p>
 I don't want to bore you with a definition. It's really just a mindset
 </p>
@@ -2558,8 +2106,8 @@ I don't want to bore you with a definition. It's really just a mindset
 </ul>
 
 </section>
-<section id="slide-orgheadline36">
-<h3 id="orgheadline36">Why I Like Functional Programming?</h3>
+<section id="slide-orgheadline22">
+<h3 id="orgheadline22">Why I Like Functional Programming?</h3>
 <ul>
 <li>First principles</li>
 <li>Easier to write good code</li>
@@ -2570,30 +2118,8 @@ I don't want to bore you with a definition. It's really just a mindset
 </ul>
 
 </section>
-<section id="slide-orgheadline37">
-<h3 id="orgheadline37">Why Not OOP?</h3>
-<blockquote nil>
-<p>
-Christianity has not been tried and found wanting; it has been found
-difficult and not tried.
-</p>
-
-<p>
-&#x2013;  Gilbert Chersterton
-</p>
-</blockquote>
-
-<ul>
-<li>State</li>
-<li>Classes are heavyweight</li>
-<li>Don't know the prototype system</li>
-<li><b>Overrated</b></li>
-
-</ul>
-
-</section>
-<section id="slide-orgheadline38">
-<h3 id="orgheadline38">What This Is Not</h3>
+<section id="slide-orgheadline23">
+<h3 id="orgheadline23">What This Is Not</h3>
 <ul>
 <li>A full course in this paradigm</li>
 <li>A pure functional style</li>
@@ -2603,8 +2129,8 @@ difficult and not tried.
 </ul>
 
 </section>
-<section id="slide-orgheadline39">
-<h3 id="orgheadline39">What This Is</h3>
+<section id="slide-orgheadline24">
+<h3 id="orgheadline24">What This Is</h3>
 <p>
 To introduce you to think and write in a functional style can help
 you write good code in JavaScript and nothing more.
@@ -2613,8 +2139,8 @@ you write good code in JavaScript and nothing more.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline43">
-<h2 id="orgheadline43">The Idea</h2>
+<section id="slide-orgheadline28">
+<h2 id="orgheadline28">The Idea</h2>
 <blockquote nil>
 <p>
 What is the most resilient parasite? Bacteria? A virus? An intestinal
@@ -2630,8 +2156,8 @@ somewhere.
 </blockquote>
 
 </section>
-<section id="slide-orgheadline41">
-<h3 id="orgheadline41">The Ideas Of Functional Programming For JavaScript</h3>
+<section id="slide-orgheadline26">
+<h3 id="orgheadline26">The Ideas Of Functional Programming For JavaScript</h3>
 <p>
 The whole of the presentation
 </p>
@@ -2639,23 +2165,29 @@ The whole of the presentation
 <ul>
 <li>Thinking in terms of collections or as a whole</li>
 <li>Separating behaviors and combining them</li>
-<li>Avoiding state with closures</li>
+<li><code>map</code>, <code>filter</code> and <code>reduce</code></li>
+<li><code>compose</code> and <code>curry</code></li>
 
 </ul>
 
 </section>
-<section id="slide-orgheadline42">
-<h3 id="orgheadline42">Caveat</h3>
+<section id="slide-orgheadline27">
+<h3 id="orgheadline27">Caveat</h3>
 <p>
 You do not have to understand the code, just feel and see that this
 is much cleaner and better as a whole.
 </p>
 
+<p>
+The idea is more important, ignore the nuances of the language but
+see that it is easily done.
+</p>
+
 </section>
 </section>
 <section>
-<section id="slide-orgheadline86">
-<h2 id="orgheadline86">Chapter 1: Thinking With Functions</h2>
+<section id="slide-orgheadline62">
+<h2 id="orgheadline62">Thinking With Functions</h2>
 <p>
 Let's talk about lists and their functions namely
 </p>
@@ -2666,16 +2198,15 @@ Spoilers
 
 <ul>
 <li><code>.forEach</code></li>
-<li><code>.map()</code> &amp; <code>.mapObject</code></li>
-<li><code>.toPairs</code> &amp; <code>.fromPairs</code></li>
-<li><code>.filter</code> &amp; <code>.filterObject</code></li>
+<li><code>.map()</code></li>
+<li><code>.filter</code></li>
 <li><code>.reduce</code></li>
 
 </ul>
 
 </section>
-<section id="slide-orgheadline46">
-<h3 id="orgheadline46">A Question Of Intent</h3>
+<section id="slide-orgheadline31">
+<h3 id="orgheadline31">A Question Of Intent</h3>
 <p>
 Who here uses a for loop like so?
 </p>
@@ -2691,8 +2222,8 @@ Who here uses a for loop like so?
 </div>
 
 </section>
-<section id="slide-orgheadline44">
-<h4 id="orgheadline44">What's Wrong With For Loops?</h4>
+<section id="slide-orgheadline29">
+<h4 id="orgheadline29">What's Wrong With For Loops?</h4>
 <p>
 Intention
 </p>
@@ -2723,8 +2254,8 @@ loop mechanics?
 </p>
 
 </section>
-<section id="slide-orgheadline45">
-<h4 id="orgheadline45">No More For Loops</h4>
+<section id="slide-orgheadline30">
+<h4 id="orgheadline30">No More For Loops</h4>
 <p>
 Our journey starts by using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global">forEach</a> method of an list which
 allows you to loop through a list given a callback.
@@ -2736,7 +2267,7 @@ allows you to loop through a list given a callback.
 
 <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Use forEach to iterate thorugh a list</span>
 assassins.forEach(<span style="color: #20b2aa; font-weight: bold;">function</span> getConnor(<span style="color: #9acd32;">assassin</span>) { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Give the function a descriptive name</span>
-    <span style="color: #20b2aa; font-weight: bold;">if</span> (hero === <span style="color: #ffa07a;">'Connor'</span>) {
+    <span style="color: #20b2aa; font-weight: bold;">if</span> (assassin === <span style="color: #ffa07a;">'Connor'</span>) {
         console.log(<span style="color: #ffa07a;">'Where is Charles Lee'</span>);
     }
 });
@@ -2753,8 +2284,8 @@ But did you notice we passed a function to another function(the callback).
 </p>
 
 </section>
-<section id="slide-orgheadline48">
-<h3 id="orgheadline48">0th Virtue: Function Variables</h3>
+<section id="slide-orgheadline33">
+<h3 id="orgheadline33">0th Virtue: Function Variables</h3>
 <p>
 The bare minimum that allows JavaScript to be functional is that
 functions are first class objects meaning you can pass functions as
@@ -2781,8 +2312,8 @@ about it.
 </p>
 
 </section>
-<section id="slide-orgheadline47">
-<h4 id="orgheadline47">Implementing forEach</h4>
+<section id="slide-orgheadline32">
+<h4 id="orgheadline32">Implementing forEach</h4>
 <p>
 Let's implement our own <code>forEach</code> for analysis
 </p>
@@ -2794,7 +2325,7 @@ Let's implement our own <code>forEach</code> for analysis
     <span style="color: #20b2aa; font-weight: bold;">for</span> (<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">i</span> = 0; i &lt; xs.length; i+=1) {
         <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">x</span> = xs[i];
 
-        f.call(<span style="color: #1e90ff;">this</span>,  x);
+        f(x);
     }
 };
 
@@ -2813,10 +2344,10 @@ the logic
 </p>
 
 </section>
-<section id="slide-orgheadline53">
-<h3 id="orgheadline53">Transforming Collections</h3>
+<section id="slide-orgheadline38">
+<h3 id="orgheadline38">Transforming Collections</h3>
 <p>
-Let's move on a similar case of transforming the collection.
+Let's move on a similar case of transforming a collection.
 </p>
 
 <p>
@@ -2845,8 +2376,8 @@ capitalize each word in the list.
 </p>
 
 </section>
-<section id="slide-orgheadline49">
-<h4 id="orgheadline49">The Intention</h4>
+<section id="slide-orgheadline34">
+<h4 id="orgheadline34">The Intention</h4>
 <p>
 The intention of the problem if we define it as a function.
 </p>
@@ -2864,8 +2395,8 @@ What if we can just apply it as a whole instead of defining it?
 </p>
 
 </section>
-<section id="slide-orgheadline50">
-<h4 id="orgheadline50">Using <code>map</code></h4>
+<section id="slide-orgheadline35">
+<h4 id="orgheadline35">Using <code>map</code></h4>
 <p>
 Thankfully the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">map</a> method of lists allows this.
 </p>
@@ -2880,10 +2411,11 @@ Thankfully the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/
 
 <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Just like forEach</span>
 <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">newWords</span> = words.map(capitalize);
+
 <span style="color: #cd853f;">// </span><span style="color: #cd853f;">or if you want to inline it</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">var newWords = words.map(function (word) {</span>
-<span style="color: #cd853f;">//   </span><span style="color: #cd853f;">return text.toUpperCase();</span>
-<span style="color: #cd853f;">//  </span><span style="color: #cd853f;">});</span>
+<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">newWordsInline</span> = words.map(<span style="color: #20b2aa; font-weight: bold;">function</span> _inlineCapitalize(<span style="color: #9acd32;">word</span>) {
+    <span style="color: #20b2aa; font-weight: bold;">return</span> text.toUpperCase();
+});
 
 console.log(newWords); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Like the last</span>
 </pre>
@@ -2894,8 +2426,8 @@ Again, we have cleanly separated the intention from the loop.
 </p>
 
 </section>
-<section id="slide-orgheadline51">
-<h4 id="orgheadline51">Examples of map</h4>
+<section id="slide-orgheadline36">
+<h4 id="orgheadline36">Examples of map</h4>
 <p>
 Just some examples to get improve comprehension
 </p>
@@ -2930,8 +2462,8 @@ console.log(people <span style="color: #cd853f;">// </span><span style="color: #
 </div>
 
 </section>
-<section id="slide-orgheadline52">
-<h4 id="orgheadline52">Implementing map</h4>
+<section id="slide-orgheadline37">
+<h4 id="orgheadline37">Implementing map</h4>
 <p>
 Just like with <code>forEach</code>, implenting the <code>map</code> is easy.
 </p>
@@ -2967,8 +2499,8 @@ a recurring theme?
 </p>
 
 </section>
-<section id="slide-orgheadline54">
-<h3 id="orgheadline54">1st Virtue: Input And Output</h3>
+<section id="slide-orgheadline39">
+<h3 id="orgheadline39">1st Virtue: Input And Output</h3>
 <p>
 The user of the function should only be concerned with the input and
 output, not how it is done. It is transforming the inputs to produce
@@ -2982,275 +2514,23 @@ for loop or a forEach function or a recursion.
 </p>
 
 <p>
-This is both hard to explain and do. Let's demonstrate this with the
-next concept.
+<b>What</b>, not <b>how</b> is the thinking style here.
+</p>
+</section>
+<section id="slide-orgheadline40">
+<h3 id="orgheadline40">Reflection: <code>forEach</code> and <code>map</code></h3>
+<p>
+So far we just separated the intent from our for loop and we came up
+with a neat little behavior.
+</p>
+
+<p>
+Cool, so what's next?
 </p>
 
 </section>
-<section id="slide-orgheadline62">
-<h3 id="orgheadline62">Objects As Collections</h3>
-<p>
-You can think of objects as a collection of key value pairs
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">object</span> = {
-    <span style="color: #ffa07a;">'cowboy'</span>: <span style="color: #ffa07a;">'bebop'</span>,
-    <span style="color: #ffa07a;">'stein'</span>: <span style="color: #ffa07a;">'gate'</span>,
-    <span style="color: #ffa07a;">'summer'</span>: <span style="color: #ffa07a;">'wars'</span>
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">objectPairs</span> = [
-    [<span style="color: #ffa07a;">'cowboy'</span>, <span style="color: #ffa07a;">'bebop'</span>],
-    [<span style="color: #ffa07a;">'stein'</span>, <span style="color: #ffa07a;">'gate'</span>],
-    [<span style="color: #ffa07a;">'summer'</span>, <span style="color: #ffa07a;">'wars'</span>]
-];
-</pre>
-</div>
-
-<p>
-So why should it matter? Patience, let's define what pairs are.
-</p>
-
-</section>
-<section id="slide-orgheadline55">
-<h4 id="orgheadline55">Pairs</h4>
-<p>
-<b>Pairs</b> are just lists with two elements. Easy, right?
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">numberPair</span> = [100, 20],
-    stringPair = [<span style="color: #ffa07a;">'Satoshi Kon'</span>, <span style="color: #ffa07a;">'Tokyo Godfathers'</span>],
-    keyValuePair = [<span style="color: #ffa07a;">'key'</span>, { subObject: 1}],
-    pairInPairs = [[1, 2], [3, 4]]; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Not going to go that far</span>
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">numericTriple</span> = [1, 2, 3], <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Three elements</span>
-    singleString = [<span style="color: #ffa07a;">'Working!!!'</span>];   <span style="color: #cd853f;">// </span><span style="color: #cd853f;">One element</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline56">
-<h4 id="orgheadline56">Objects As Pairs</h4>
-<p>
-Let's create a function to convert an object to a list of key value
-pairs
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #cd853f;">// </span><span style="color: #cd853f;">Assuming we don't have Object.keys</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">This returns the keys of an object</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">keys</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">object</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">keys</span> = [];
-
-    <span style="color: #20b2aa; font-weight: bold;">for</span> (<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">key</span> <span style="color: #20b2aa; font-weight: bold;">in</span> object) {
-        <span style="color: #20b2aa; font-weight: bold;">if</span> (object.hasOwnProperty(key)) {
-            keys.push(key);
-        }
-    }
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> keys;
-};
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Making the get a function</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">get</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">key</span>, <span style="color: #9acd32;">object</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">return</span> object[key];
-};
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Converts an object to a list of key value pair</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">toPairs</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">object</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">return</span> keys(object)
-        .map(<span style="color: #20b2aa; font-weight: bold;">function</span> covertToPair(<span style="color: #9acd32;">key</span>) {
-            <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">value</span> = get(key, object);
-
-            <span style="color: #20b2aa; font-weight: bold;">return</span> [key, value];
-        });
-};
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline57">
-<h4 id="orgheadline57">Using toPairs</h4>
-<p>
-Just a demonstration.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript">toPairs({
-    number: 1,
-    text: <span style="color: #ffa07a;">'meow'</span>,
-    isSomething: <span style="color: #1e90ff;">true</span>,
-
-    recurse: {
-        A: <span style="color: #ffa07a;">'a'</span>,
-        B: <span style="color: #ffa07a;">'b'</span>
-    }
-})
-<span style="color: #cd853f;">/*</span>
-<span style="color: #cd853f;">  out: [</span>
-<span style="color: #cd853f;">  ['number', 1],</span>
-<span style="color: #cd853f;">  ['text', 'meow'],</span>
-<span style="color: #cd853f;">  ['isSomething', true],</span>
-<span style="color: #cd853f;">  ['recurse', {</span>
-<span style="color: #cd853f;">  A: 'a',</span>
-<span style="color: #cd853f;">  B: 'b'</span>
-<span style="color: #cd853f;">  }]]</span>
-<span style="color: #cd853f;">  ]</span>
-<span style="color: #cd853f;">*/</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline58">
-<h4 id="orgheadline58">Pairs As Objects</h4>
-<p>
-Let's create a function to do the opposite: convert a function
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #cd853f;">// </span><span style="color: #cd853f;">Let's wrap the set of objects as a function</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">set</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">key</span>, <span style="color: #9acd32;">value</span>, <span style="color: #9acd32;">object</span>) {
-    object[key] = value;
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> object;
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">fromPairs</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">pairs</span>) {
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">The recursive version is much more functional but not necessarily better</span>
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">newObject</span> = {};
-
-    pairs.forEach(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">pair</span>) {
-        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">key</span> = pair[0],
-            value = pair[1];
-
-        set(key, value, object);
-    });
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> newObject;
-};
-</pre>
-</div>
-
-<p class="fragment">
-So what does it mean to think of objects as pairs?
-</p>
-
-</section>
-<section id="slide-orgheadline59">
-<h4 id="orgheadline59">Objects As A Whole</h4>
-<p>
-What if you had an object and want to capitalize every string?
-</p>
-
-<p>
-What if we could map over over objects as we do with lists?
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">formData</span> = {
-    firstName: <span style="color: #ffa07a;">'Linus'</span>,
-    lastName: <span style="color: #ffa07a;">'Van Pelt'</span>,
-    age: 20
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">tryUppercase</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> _intention(<span style="color: #9acd32;">value</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">return</span> (<span style="color: #20b2aa; font-weight: bold;">typeof</span> value === <span style="color: #ffa07a;">'string'</span>) ? value.toUpperCase() : value;
-}
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">mapObject</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">f</span>, <span style="color: #9acd32;">object</span>) {
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">???</span>
-};
-
-mapObject(tryUppercase, formData);
-<span style="color: #cd853f;">/* </span><span style="color: #cd853f;">expected:</span>
-<span style="color: #cd853f;">   {</span>
-<span style="color: #cd853f;">   firstName: 'LINUS',</span>
-<span style="color: #cd853f;">   lastName: 'VAN PELT',</span>
-<span style="color: #cd853f;">   age: 20</span>
-<span style="color: #cd853f;">   }</span>
-<span style="color: #cd853f;"> */</span>
-</pre>
-</div>
-
-<p class="fragment">
-Of course we can.
-</p>
-
-</section>
-<section id="slide-orgheadline60">
-<h4 id="orgheadline60">Implementing <code>mapObject</code></h4>
-<p>
-Using all we made so far
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #cd853f;">// </span><span style="color: #cd853f;">A naive implementation to use all we have</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">mapObject</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">f</span>, <span style="color: #9acd32;">object</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">mappedPairs</span> = toPairs(object) <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Step 1: Convert to pairs</span>
-        .map(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">pair</span>) {
-            <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">key</span> = pair[0],
-                value = pair[1],
-                newValue = f(value, key); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Step 2: Map over the value</span>
-
-            <span style="color: #20b2aa; font-weight: bold;">return</span> [key, newValue]; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Can be more succinct</span>
-        });
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> fromPairs(mappedPairs); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Step 3: Convert to object</span>
-};
-</pre>
-</div>
-
-<p>
-Notice how we transform the object to pairs and back again. This
-demonstrates the first virtue.
-</p>
-
-</section>
-<section id="slide-orgheadline61">
-<h4 id="orgheadline61">Another Example of <code>mapObject</code></h4>
-<p>
-What if we want to find the differences between an old and new
-object?
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">diff</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">oldObject</span>, <span style="color: #9acd32;">newObject</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">return</span> mapObject(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">oldValue</span>, <span style="color: #9acd32;">key</span>) {
-        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">newValue</span> = newObject[key];
-
-        <span style="color: #20b2aa; font-weight: bold;">return</span> oldValue !== newValue;
-    }, oldObject);
-}
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">oldData</span> = { company: <span style="color: #ffa07a;">'Outbreak Comapny'</span>, position: <span style="color: #ffa07a;">'Ambassador'</span>, gender: <span style="color: #ffa07a;">'male'</span>},
-    newData = { company: <span style="color: #ffa07a;">'IT Outsourcing'</span>, position: <span style="color: #ffa07a;">'Ambassador'</span>, gender: <span style="color: #ffa07a;">'male'</span>};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">diffData</span> = diff(oldData, newData);
-
-console.log(diffData);
-<span style="color: #cd853f;">/* </span><span style="color: #cd853f;">out:</span>
-<span style="color: #cd853f;">   { company: true, position: false, gender: false }</span>
-<span style="color: #cd853f;">*/</span>
-
-<span style="color: #20b2aa; font-weight: bold;">if</span> (diffData.company) { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Compare with oldData.company !== newData.company</span>
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Do something when the company changes</span>
-}
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline65">
-<h3 id="orgheadline65">Shrinking Collections</h3>
+<section id="slide-orgheadline44">
+<h3 id="orgheadline44">Shrinking Collections</h3>
 <p>
 Let's move on to filtering collections given a criteria.
 </p>
@@ -3281,8 +2561,33 @@ There is a function for lists called <a href="https://developer.mozilla.org/en-U
 </p>
 
 </section>
-<section id="slide-orgheadline63">
-<h4 id="orgheadline63">Using <code>filter</code></h4>
+<section id="slide-orgheadline41">
+<h4 id="orgheadline41">Predicate Functions</h4>
+<p>
+Before we use <code>filter</code>, a bit of terminology.
+</p>
+
+<p>
+A <b>predicate function</b> is just a function that returns <code>true</code> or
+<code>false</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-javascript"><span style="color: #cd853f;">// </span><span style="color: #cd853f;">Predicate functions</span>
+<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">equal</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">a</span>, <span style="color: #9acd32;">b</span>)  { <span style="color: #20b2aa; font-weight: bold;">return</span> a === b; },
+    isOdd = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">n</span>) { <span style="color: #20b2aa; font-weight: bold;">return</span> n % 2 === 0; },
+    alwaysTrue = <span style="color: #20b2aa; font-weight: bold;">function</span> () { <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #1e90ff;">true</span>; }; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Always returns true</span>
+
+<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Not predicate functions</span>
+<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">toString</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">x</span>) { <span style="color: #20b2aa; font-weight: bold;">return</span> x.toString(); }, <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Text value</span>
+    concat = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">xs</span>, <span style="color: #9acd32;">ys</span>) { <span style="color: #20b2aa; font-weight: bold;">return</span> xs.concat(ys); }; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">List value</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgheadline42">
+<h4 id="orgheadline42">Using <code>filter</code></h4>
 <p>
 Given a predicate or a boolean function and a list, return a new
 list where the predicate is true over the list.
@@ -3312,8 +2617,8 @@ So we have another way to work with lists.
 </p>
 
 </section>
-<section id="slide-orgheadline64">
-<h4 id="orgheadline64">Implementing <code>filter</code></h4>
+<section id="slide-orgheadline43">
+<h4 id="orgheadline43">Implementing <code>filter</code></h4>
 <p>
 Again, we implement this for our own benefit.
 </p>
@@ -3331,6 +2636,8 @@ Again, we implement this for our own benefit.
             ys.push(y);
         }
     });
+
+    <span style="color: #20b2aa; font-weight: bold;">return</span> ys;
 };
 
 <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">isLowerCase</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">text</span>) {
@@ -3343,27 +2650,17 @@ console.log(filter(isLowerCase, vendors)); <span style="color: #cd853f;">// </sp
 </pre>
 </div>
 
-<p class="fragment">
-So we have another trick to use with lists. However, this trick
-has two other concepts attached to it.
-</p>
-
 </section>
-<section id="slide-orgheadline66">
-<h3 id="orgheadline66">First Thing: Nested Ifs</h3>
+<section id="slide-orgheadline45">
+<h3 id="orgheadline45">Nested Ifs</h3>
 <p>
 Who here likes nested <code>if</code> statements?
 </p>
 
 <div class="org-src-container">
 
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">a</span> === <span style="color: #1e90ff;">true</span>;
-
-<span style="color: #20b2aa; font-weight: bold;">if</span> (a) {
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">One if is okay</span>
-}
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">b</span> === <span style="color: #1e90ff;">false</span>;
+<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">a</span> === <span style="color: #1e90ff;">true</span>,
+    b === <span style="color: #1e90ff;">false</span>;
 
 <span style="color: #20b2aa; font-weight: bold;">if</span> (!a) {
     <span style="color: #20b2aa; font-weight: bold;">if</span> (b) {
@@ -3390,8 +2687,8 @@ more complicated to reason about with too many ifs.
 </p>
 
 </section>
-<section id="slide-orgheadline72">
-<h3 id="orgheadline72">Code Review</h3>
+<section id="slide-orgheadline51">
+<h3 id="orgheadline51">Code Review</h3>
 <p>
 Consider this code as an example of nesting ifs. Given a list of
 books that are to be processed and a book isbn table, find all the
@@ -3431,8 +2728,8 @@ Let's refactor this to get to my point
 </p>
 
 </section>
-<section id="slide-orgheadline67">
-<h4 id="orgheadline67">Refactor 01: Separate Intentions</h4>
+<section id="slide-orgheadline46">
+<h4 id="orgheadline46">Refactor 01: Separate Intentions</h4>
 <p>
 Separate the main intentions
 </p>
@@ -3467,8 +2764,8 @@ books.forEach(<span style="color: #20b2aa; font-weight: bold;">function</span> (
 </div>
 
 </section>
-<section id="slide-orgheadline68">
-<h4 id="orgheadline68">Refactor 02: Use Filter</h4>
+<section id="slide-orgheadline47">
+<h4 id="orgheadline47">Refactor 02: Use Filter</h4>
 <p>
 Let's remove the first <code>if</code> statement using the new found <code>filter</code> power
 </p>
@@ -3507,8 +2804,8 @@ We removed one if, can we remove the other?
 </p>
 
 </section>
-<section id="slide-orgheadline69">
-<h4 id="orgheadline69">Refactor 03: Use Filter Again</h4>
+<section id="slide-orgheadline48">
+<h4 id="orgheadline48">Refactor 03: Use Filter Again</h4>
 <p>
 We can chain the <code>filter</code> to remove the other if
 </p>
@@ -3546,8 +2843,8 @@ And maybe we can remove the awkward <code>forEach</code> here
 </p>
 
 </section>
-<section id="slide-orgheadline70">
-<h4 id="orgheadline70">Refactor 04: Just <code>filter</code></h4>
+<section id="slide-orgheadline49">
+<h4 id="orgheadline49">Refactor 04: Just <code>filter</code></h4>
 <p>
 We just let the <code>filter</code> chain be the result and we're done
 </p>
@@ -3581,8 +2878,8 @@ Although contrived, we just eliminated the if statements with the
 </p>
 
 </section>
-<section id="slide-orgheadline71">
-<h4 id="orgheadline71">Avoiding Ifs With <code>filter</code></h4>
+<section id="slide-orgheadline50">
+<h4 id="orgheadline50">Avoiding Ifs With <code>filter</code></h4>
 <p>
 Notice how the code is much more readable and easier to understand
 without the explicit ifs?
@@ -3608,108 +2905,21 @@ just hack the if condition.
 </p>
 
 </section>
-<section id="slide-orgheadline75">
-<h3 id="orgheadline75">Second Thing: Filter Collections</h3>
+<section id="slide-orgheadline52">
+<h3 id="orgheadline52">Reflection: <code>filter</code></h3>
 <p>
-If objects are also collections, then couldn't we filter over them as
-well?
+So we gained a new capability to filter a list and it applies to
+objects as well. Again this stems from the fact that we are just
+refactoring.
 </p>
 
 <p>
-For example, we want to remove all <code>null</code> or <code>undefined</code> in an object
-so that we can pass it over the wire.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">ajaxData</span> = {
-    email: <span style="color: #ffa07a;">'francisavmurillo@gmail.com'</span>,
-    age: <span style="color: #1e90ff;">null</span>,
-    gender: <span style="color: #ffa07a;">'male'</span>,
-    birthday: <span style="color: #1e90ff;">null</span>
-}
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">isData</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">value</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">return</span> value != <span style="color: #1e90ff;">null</span> || value != <span style="color: #1e90ff;">undefined</span> || value != <span style="color: #ffa07a;">''</span>;
-};
-
-console.log(filterObject(isData, ajaxData)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">filterObject???</span>
-<span style="color: #cd853f;">/* </span><span style="color: #cd853f;">out:</span>
-<span style="color: #cd853f;">   {</span>
-<span style="color: #cd853f;">   email: 'francisavmurillo@gmail.com',</span>
-<span style="color: #cd853f;">   gender: 'male'</span>
-<span style="color: #cd853f;">   }</span>
-<span style="color: #cd853f;">*/</span>
-</pre>
-</div>
-
-<p class="fragment">
-You already know it is.
+This leads us to the next virtue
 </p>
 
 </section>
-<section id="slide-orgheadline73">
-<h4 id="orgheadline73">Implementing <code>filterObject</code></h4>
-<p>
-I can't believe this is too easy.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">filterObject</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">p</span>,  <span style="color: #9acd32;">object</span>) { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Just like mapObject</span>
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">filteredPairs</span> = toPairs(object)
-      .filter(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">pair</span>) { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Notice map is just replaced with filter</span>
-          <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">key</span> = pair[0],
-            value = pair[1],
-
-            <span style="color: #20b2aa; font-weight: bold;">return</span> p(value, key); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">We apply the predicate here</span>
-      });
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> fromPairs(filteredPairs);
-}
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline74">
-<h4 id="orgheadline74">Using <code>filterObject</code></h4>
-<p>
-How about a contrived example?
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">request</span> = {
-    _method: <span style="color: #ffa07a;">'POST'</span>,
-    _csrf: <span style="color: #ffa07a;">'abcde'</span>,
-    someData: 1
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">isUnderscored</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">text</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">return</span> text[0] === <span style="color: #ffa07a;">'_'</span>;
-};
-
-
-
-console.log(filterObject(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">value</span>, <span style="color: #9acd32;">key</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">return</span> isUnderscored(key);
-}, request));
-
-<span style="color: #cd853f;">/* </span><span style="color: #cd853f;">out: {</span>
-<span style="color: #cd853f;">   _method: 'POST',</span>
-<span style="color: #cd853f;">   _csrf: 'abcde'</span>
-<span style="color: #cd853f;">   }</span>
-<span style="color: #cd853f;">*/</span>
-</pre>
-</div>
-
-<p>
-But filtering by keys is not my point.
-</p>
-
-</section>
-<section id="slide-orgheadline76">
-<h3 id="orgheadline76">2nd Virtue: Data Abstraction</h3>
+<section id="slide-orgheadline53">
+<h3 id="orgheadline53">2nd Virtue: Data Abstraction</h3>
 <p>
 By thinking about the operations over data, we can abstract the
 behavior to other containers.
@@ -3732,8 +2942,8 @@ data type the same ideas can come into place.
 </p>
 
 </section>
-<section id="slide-orgheadline83">
-<h3 id="orgheadline83">Collecting Collections</h3>
+<section id="slide-orgheadline58">
+<h3 id="orgheadline58">Collecting Collections</h3>
 <p>
 Finally, we move on to collecting or aggregating all the values of an collection.
 </p>
@@ -3747,11 +2957,11 @@ For example, given a list of numbers, return their sum
 <pre  class="src src-javascript"><span style="color: #cd853f;">// </span><span style="color: #cd853f;">You're probably getting the picture or getting bored</span>
 <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">numbers</span> = [1, 2, 3, 4, 5];
 
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">sum</span> = 0;
-
 <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">add</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">a</span>, <span style="color: #9acd32;">b</span>) {
     <span style="color: #20b2aa; font-weight: bold;">return</span> a + b;
 };
+
+<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">sum</span> = 0;
 
 numbers.forEach(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">number</span>) {
     sum = add(sum, number);
@@ -3761,13 +2971,13 @@ console.log(sum);
 </pre>
 </div>
 
-<p class="fragment">
-We have the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce?redirectlocale=en-US&amp;redirectslug=JavaScript/Reference/Global_Objects/Array/Reduc" class="fragment">reduce</a> function for this
+<p>
+We have the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce?redirectlocale=en-US&amp;redirectslug=JavaScript/Reference/Global_Objects/Array/Reduc">reduce</a> function for this
 </p>
 
 </section>
-<section id="slide-orgheadline77">
-<h4 id="orgheadline77">Using <code>reduce</code></h4>
+<section id="slide-orgheadline54">
+<h4 id="orgheadline54">Using <code>reduce</code></h4>
 <p>
 <code>reduce</code> takes a combining function and a list and returns the
 combined values of the list.
@@ -3797,10 +3007,11 @@ Let's implement this like the other two
 </p>
 
 </section>
-<section id="slide-orgheadline78">
-<h4 id="orgheadline78">Implementing <code>reduce</code></h4>
+<section id="slide-orgheadline55">
+<h4 id="orgheadline55">Implementing <code>reduce</code></h4>
 <p>
-Once you implement it, the idea of combining function is easy
+Once you implement it, the idea of combining function is easy. Again
+this is just the code above that is just refactored.
 </p>
 
 <div class="org-src-container">
@@ -3823,15 +3034,16 @@ Let's have the usual examples
 </p>
 
 </section>
-<section id="slide-orgheadline79">
-<h4 id="orgheadline79">Examples of <code>reduce</code></h4>
+<section id="slide-orgheadline56">
+<h4 id="orgheadline56">Example of <code>reduce</code></h4>
 <p>
 Some basic examples of <code>reduce</code>
 </p>
 
 <div class="org-src-container">
 
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">numbers</span> = [1, 2, 3, 4];
+<pre  class="src src-javascript"><span style="color: #cd853f;">// </span><span style="color: #cd853f;">I like Math</span>
+<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">numbers</span> = [1, 2, 3, 4];
 
 <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">multiply</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">x</span>, <span style="color: #9acd32;">y</span>)  {
     <span style="color: #20b2aa; font-weight: bold;">return</span> x * y;
@@ -3847,8 +3059,8 @@ How about some real examples?
 </p>
 
 </section>
-<section id="slide-orgheadline80">
-<h4 id="orgheadline80">A More Specific <code>find</code></h4>
+<section id="slide-orgheadline57">
+<h4 id="orgheadline57">A More Specific <code>find</code></h4>
 <p>
 Sometimes in a list, you want to find a specific value given a
 criteria or predicate.
@@ -3883,59 +3095,24 @@ console.log(find(isTheMeaningOfLife, 0, [37, 43, 49])); <span style="color: #cd8
 </div>
 
 </section>
-<section id="slide-orgheadline81">
-<h4 id="orgheadline81">A Deep Getter</h4>
+<section id="slide-orgheadline59">
+<h3 id="orgheadline59">Reflection: <code>reduce</code></h3>
 <p>
-Imagine you have an deep object and you want to access an inner
-object and don't want to deal with undefined types exception. We can
-make a safe getter for that.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">deepGetter</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">deepKey</span>, <span style="color: #9acd32;">object</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">keys</span> = deepKey.split(<span style="color: #ffa07a;">'.'</span>);
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> keys.reduce(<span style="color: #20b2aa; font-weight: bold;">function</span> _deepGet(<span style="color: #9acd32;">currentObject</span>, <span style="color: #9acd32;">key</span>) {
-        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">newObject</span> = get(key, currentObject);
-
-        <span style="color: #20b2aa; font-weight: bold;">return</span> newObject === <span style="color: #1e90ff;">null</span> || newObject === <span style="color: #1e90ff;">undefined</span> ?
-            <span style="color: #1e90ff;">undefined</span> : newObject;
-    }, object);
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">deepObject</span> = {
-    a: {
-        b: {
-            c: 1
-        }
-    }
-};
-
-console.log(deepGetter(<span style="color: #ffa07a;">'a.b.c'</span>, object)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 1</span>
-console.log(deepGetter(<span style="color: #ffa07a;">'a.d'</span>, object)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: undefined</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline82">
-<h4 id="orgheadline82">What Does <code>reduce</code> Mean For Us</h4>
-<p>
-If you have a list and want an aggregated value, the <code>reduce</code> should
-be a natural choice. It allows you think in terms of combining the
-values instead of hacking around at computing it.
+So we now have a tool that aggregates or combines list.
 </p>
 
 <p>
-We'll get back to this function later.
+We now have a trio of tools and it came naturally due to a need to
+separate intention. Nothing complex has been done so far which is
+impressive what a simple function can do.
 </p>
 
 </section>
-<section id="slide-orgheadline84">
-<h3 id="orgheadline84">Combining All Three</h3>
+<section id="slide-orgheadline60">
+<h3 id="orgheadline60">All Together Now</h3>
 <p>
 Given a list of people, find all the people that are not minors and
-compute the total.
+compute the total salary.
 </p>
 
 <div class="org-src-container">
@@ -3958,7 +3135,7 @@ compute the total.
     <span style="color: #20b2aa; font-weight: bold;">return</span> x + y
 }
 
-console.log(people
+console.log(people <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Wow</span>
             .filter(isNotAMinor)
             .map(getSalary)
             .reduce(add)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Nice to see the three working together</span>
@@ -3966,8 +3143,8 @@ console.log(people
 </div>
 
 </section>
-<section id="slide-orgheadline85">
-<h3 id="orgheadline85">Quick Review</h3>
+<section id="slide-orgheadline61">
+<h3 id="orgheadline61">Quick Review</h3>
 <p>
 Just a quick review of everything we've done.
 </p>
@@ -3983,10 +3160,10 @@ Just a quick review of everything we've done.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline123">
-<h2 id="orgheadline123">Chapter 2: Combining Functions</h2>
+<section id="slide-orgheadline99">
+<h2 id="orgheadline99">Combining Functions</h2>
 <p>
-Let's get to the fun stuff
+Let's get to the fun stuff.
 </p>
 
 <p>
@@ -4000,21 +3177,21 @@ Spoilers
 </ul>
 
 </section>
-<section id="slide-orgheadline91">
-<h3 id="orgheadline91">3rd Virtue: Functions As Units Of Behavior</h3>
+<section id="slide-orgheadline67">
+<h3 id="orgheadline67">3rd Virtue: Functions As Units Of Behavior</h3>
 <p>
 Functions represents behavior or what we have been calling
 intentions.
 </p>
 
 <p>
-Primarily, a function should represent a process and not be tangled
+Primarily, a function should represent an idea and not be tangled
 with other details
 </p>
 
 </section>
-<section id="slide-orgheadline87">
-<h4 id="orgheadline87">A Simple Event</h4>
+<section id="slide-orgheadline63">
+<h4 id="orgheadline63">A Simple Event</h4>
 <p>
 Let's say we have two buttons with their corresponding handlers.
 </p>
@@ -4036,8 +3213,8 @@ All is well
 </p>
 
 </section>
-<section id="slide-orgheadline88">
-<h4 id="orgheadline88">Adding A Counter</h4>
+<section id="slide-orgheadline64">
+<h4 id="orgheadline64">Adding A Counter</h4>
 <p>
 Now, what if we want to track send information to the server that a
 button was clicked? Let's say we have a <code>sendClick</code> function that
@@ -4069,8 +3246,8 @@ sending logging data or what have you.
 </p>
 
 </section>
-<section id="slide-orgheadline89">
-<h4 id="orgheadline89">Simple Function Over Functions</h4>
+<section id="slide-orgheadline65">
+<h4 id="orgheadline65">Simple Function Over Functions</h4>
 <p>
 What we want is to separate the handler from the logging. What we
 want is to execute a function before the main one.
@@ -4100,8 +3277,8 @@ Let's use this in our example
 </p>
 
 </section>
-<section id="slide-orgheadline90">
-<h4 id="orgheadline90">Using <code>doBefore</code></h4>
+<section id="slide-orgheadline66">
+<h4 id="orgheadline66">Using <code>doBefore</code></h4>
 <p>
 Let's see how it makes the code much better
 </p>
@@ -4114,7 +3291,7 @@ Let's see how it makes the code much better
     console.log(<span style="color: #ffa07a;">'This button does something awesome'</span>);
 }); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">This functions returns the combined function</span>
 
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">otherButtonHandler</span> = doBefore(sendClick, <span style="color: #20b2aa; font-weight: bold;">function</span> () {
+<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">otherButtonHandler</span> = doBefore(sendClick, <span style="color: #20b2aa; font-weight: bold;">function</span> () { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Ditto</span>
     console.log(<span style="color: #ffa07a;">'This button does something way better than the other one'</span>);
 });
 </pre>
@@ -4127,8 +3304,8 @@ separate behaviors.
 </p>
 
 </section>
-<section id="slide-orgheadline92">
-<h3 id="orgheadline92">Reflection: Higher Order Functions</h3>
+<section id="slide-orgheadline68">
+<h3 id="orgheadline68">Reflection: Higher Order Functions</h3>
 <p>
 How many times have you copy pasted a block of function to several
 places without consideration for it's purpose or intent?
@@ -4145,93 +3322,8 @@ definition.
 </p>
 
 </section>
-<section id="slide-orgheadline93">
-<h3 id="orgheadline93">Another Warm Up: Preventing Execution</h3>
-<p>
-What if instead of executing before, we prevent the execution of the
-next one?
-</p>
-
-<p>
-For example, if you have a button and you want to allow the event to
-continue if the user has enough privilege or what have you.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">executeIf</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">checkIf</span>, <span style="color: #9acd32;">main</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #cd853f;">/* </span><span style="color: #cd853f;">args */</span>) {
-        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">args</span> = [].slice.call(<span style="color: #1e90ff;">arguments</span>);
-
-        <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Check the condition</span>
-        <span style="color: #20b2aa; font-weight: bold;">if</span> (checkIf.apply(<span style="color: #1e90ff;">null</span>, <span style="color: #1e90ff;">arguments</span>) === <span style="color: #1e90ff;">true</span>) {
-            <span style="color: #20b2aa; font-weight: bold;">return</span> main.apply(<span style="color: #1e90ff;">null</span>, <span style="color: #1e90ff;">arguments</span>);
-        }
-    }
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">checkWhatever</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #cd853f;">/* </span><span style="color: #cd853f;">args */</span>) { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Check for something</span>
-    console.log(<span style="color: #ffa07a;">'You shall not pass'</span>);
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">alert('You shall not pass'); // also works</span>
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #1e90ff;">false</span>;
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">buttonHandler</span> = executeIf(checkWhatever, <span style="color: #20b2aa; font-weight: bold;">function</span> () {
-    console.log(<span style="color: #ffa07a;">'Button has been clicked'</span>);
-});
-</pre>
-</div>
-
-<p>
-Again the code to glue the two functions together is cheap and easy.
-</p>
-
-</section>
-<section id="slide-orgheadline94">
-<h3 id="orgheadline94">One More Appetizer: Preventing Too Many Clicks</h3>
-<p>
-How about we prevent a button being pressed in a short burst, could
-be useful for submit buttons
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">debounce</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">f</span>, <span style="color: #9acd32;">delay</span>) { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">I didn't come up with debounce</span>
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">blockInvokations</span> = <span style="color: #1e90ff;">false</span>; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Using closures here, spoilers</span>
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #cd853f;">/* </span><span style="color: #cd853f;">args */</span>) {
-        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">args</span> = [].slice.call(<span style="color: #1e90ff;">arguments</span>);
-
-        <span style="color: #20b2aa; font-weight: bold;">if</span> (blockInvokations === <span style="color: #1e90ff;">false</span>) {
-            blockInvokations = <span style="color: #1e90ff;">true</span>; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Block succeeding invokations</span>
-
-            setTimeout(<span style="color: #20b2aa; font-weight: bold;">function</span> _unblock() { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Unblock it after the delay</span>
-                blockInvokations = <span style="color: #1e90ff;">false</span>;
-            }, delay);
-
-            <span style="color: #20b2aa; font-weight: bold;">return</span> f.apply(<span style="color: #1e90ff;">null</span>, <span style="color: #1e90ff;">arguments</span>); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Execute normally</span>
-        } <span style="color: #20b2aa; font-weight: bold;">else</span> {
-            <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Can't execute yet, got to wait</span>
-            <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #1e90ff;">undefined</span>;
-        }
-    }
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">buttonHandler</span> = debound(<span style="color: #20b2aa; font-weight: bold;">function</span> _actualHandler() {
-    console.log(<span style="color: #ffa07a;">'You just paid some website some electronic cash'</span>);
-}, 300); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">300 is a magic number</span>
-</pre>
-</div>
-
-<p>
-A little more complicated but it does show how the we can separate
-concerns or behaviors
-</p>
-
-</section>
-<section id="slide-orgheadline99">
-<h3 id="orgheadline99">Learning To Compose</h3>
+<section id="slide-orgheadline73">
+<h3 id="orgheadline73">Learning To Compose</h3>
 <p>
 Once you understand that you can join functions together, you can
 create a pipeline using functions.
@@ -4261,7 +3353,6 @@ an object then converting into JSON.
 <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">data</span> = { name: <span style="color: #ffa07a;">'Muffin'</span>, breed: <span style="color: #ffa07a;">'Puspin'</span>, age: 4 };
 
 <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">output</span> = objectToJson(objectToUpperCase(data)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">The end result</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">But I shouldn't care about toJson or toUpperCase</span>
 </pre>
 </div>
 
@@ -4270,8 +3361,8 @@ Better if the two functions can be joined as one intention, <code>objectSerializ
 </p>
 
 </section>
-<section id="slide-orgheadline95">
-<h4 id="orgheadline95">A Messy Invokation</h4>
+<section id="slide-orgheadline69">
+<h4 id="orgheadline69">A Messy Invokation</h4>
 <p>
 Just to demonstrate the extra parenthesis are not just dirty, but
 harder to read and maintain
@@ -4304,8 +3395,8 @@ is something to tie the pipeline.
 </p>
 
 </section>
-<section id="slide-orgheadline96">
-<h4 id="orgheadline96">Introducting <code>compose</code></h4>
+<section id="slide-orgheadline70">
+<h4 id="orgheadline70">Introducting <code>compose</code></h4>
 <p>
 So the function we're looking for <code>compose</code>, given two functions it
 will call the second one with the arguments and pass it's output to
@@ -4323,12 +3414,10 @@ wrapping of parenthesis in function invokation.
     <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #cd853f;">/* </span><span style="color: #cd853f;">args */</span>) {
         <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">args</span> = <span style="color: #1e90ff;">arguments</span>;
 
-        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">firstValue</span> = inner.apply(<span style="color: #1e90ff;">null</span>, args);
-        <span style="color: #cd853f;">// </span><span style="color: #cd853f;">First, invoke the inner function</span>
+        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">innerValue</span> = inner.apply(<span style="color: #1e90ff;">null</span>, args),
+            outerValue = outer(firstValue);
 
-        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">nextValue</span> = outer.call(<span style="color: #1e90ff;">null</span>, firstValue);
-        <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Then invoke the outer function with the return value as the argument</span>
-
+        <span style="color: #cd853f;">// </span><span style="color: #cd853f;">or which looks natural // return outer(inner.apply(null, arguments));</span>
         <span style="color: #20b2aa; font-weight: bold;">return</span> nextValue;
     };
 },
@@ -4340,8 +3429,8 @@ Let's see this in our example above
 </p>
 
 </section>
-<section id="slide-orgheadline97">
-<h4 id="orgheadline97">Using <code>compose</code></h4>
+<section id="slide-orgheadline71">
+<h4 id="orgheadline71">Using <code>compose</code></h4>
 <p>
 Let's join those two functions in with <code>compose</code>
 </p>
@@ -4364,18 +3453,18 @@ Let's join those two functions in with <code>compose</code>
     <span style="color: #cd853f;">// </span><span style="color: #cd853f;">...</span>
 };
 
-console.log(objectSerialize(data));
+console.log(objectSerialize(data)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Ah, looks cleaner.</span>
 </pre>
 </div>
 
 <p>
 We successfully removed those wonky parenthesis but how else can
-compose help us in our journey of better code.
+compose help us in our journey of better code?
 </p>
 
 </section>
-<section id="slide-orgheadline98">
-<h4 id="orgheadline98">Examples of <code>compose</code></h4>
+<section id="slide-orgheadline72">
+<h4 id="orgheadline72">Examples of <code>compose</code></h4>
 <p>
 Let's get acquainted with our new friend, make it your BFF if you
 can.
@@ -4397,13 +3486,13 @@ can.
 </div>
 
 <p>
-Composing is better when you start using it with closures and
-currying. But for now, how do we compose more than two functions?
+Composing is better when you start using it with currying. But for
+now, how do we compose more than two functions?
 </p>
 
 </section>
-<section id="slide-orgheadline105">
-<h3 id="orgheadline105">Improving <code>compose</code></h3>
+<section id="slide-orgheadline79">
+<h3 id="orgheadline79">Improving <code>compose</code></h3>
 <p>
 So how do we compose functions all the way to the moon?
 </p>
@@ -4435,8 +3524,8 @@ First, we go back to our old friends
 </p>
 
 </section>
-<section id="slide-orgheadline100">
-<h4 id="orgheadline100">Some Backups</h4>
+<section id="slide-orgheadline74">
+<h4 id="orgheadline74">Some Things First</h4>
 <p>
 Let's implement a few things to improve the readability of our grand
 <code>composes</code>
@@ -4473,8 +3562,8 @@ Let's implement a few things to improve the readability of our grand
 </div>
 
 </section>
-<section id="slide-orgheadline101">
-<h4 id="orgheadline101">One More Thing</h4>
+<section id="slide-orgheadline75">
+<h4 id="orgheadline75">One More Thing</h4>
 <p>
 I prefer to read left to right instead of right to left with my
 function pipeline.
@@ -4503,8 +3592,8 @@ small thing but helps in readability, just my prefrence anyway.
 </p>
 
 </section>
-<section id="slide-orgheadline102">
-<h4 id="orgheadline102">Implementing <code>composes</code></h4>
+<section id="slide-orgheadline76">
+<h4 id="orgheadline76">Implementing <code>composes</code></h4>
 <p>
 With that out of the way, we simply use <code>reduceRight</code> and <code>pipe</code>
 in one master stroke
@@ -4522,12 +3611,13 @@ in one master stroke
 </div>
 
 <p>
-That's how easy it is to implement <code>composes</code>.
+It is just basically starting at the end and composing all the way
+back. That's how easy it is to implement <code>composes</code>.
 </p>
 
 </section>
-<section id="slide-orgheadline103">
-<h4 id="orgheadline103">Equivalently <code>pipes</code></h4>
+<section id="slide-orgheadline77">
+<h4 id="orgheadline77">Equivalently <code>pipes</code></h4>
 <p>
 Just for the sake of symmetry.
 </p>
@@ -4547,8 +3637,8 @@ Now let's see how they fit together.
 </p>
 
 </section>
-<section id="slide-orgheadline104">
-<h4 id="orgheadline104">Checking Out <code>composes</code></h4>
+<section id="slide-orgheadline78">
+<h4 id="orgheadline78">Checking Out <code>composes</code></h4>
 <p>
 Let's check it out.
 </p>
@@ -4577,8 +3667,8 @@ Viola, we can compose as much as we want. But where does this leave us?
 </p>
 
 </section>
-<section id="slide-orgheadline106">
-<h3 id="orgheadline106">Function Pipelines</h3>
+<section id="slide-orgheadline80">
+<h3 id="orgheadline80">Function Pipelines</h3>
 <p>
 It's not the fact that you use <code>compose</code> or <code>pipe</code>, but rather that
 you want your code to be a single and straight process.
@@ -4601,8 +3691,8 @@ is you want to maintain the integrity of the process.
 </p>
 
 </section>
-<section id="slide-orgheadline110">
-<h3 id="orgheadline110">Avoiding Ifs With Composition</h3>
+<section id="slide-orgheadline84">
+<h3 id="orgheadline84">Avoiding Ifs With Composition</h3>
 <p>
 Let's have another case review. Given a list of employees and there
 salary, let's compute their take home pay.
@@ -4630,8 +3720,8 @@ All is fuzzy and warm
 </p>
 
 </section>
-<section id="slide-orgheadline107">
-<h4 id="orgheadline107">Gender Inequality</h4>
+<section id="slide-orgheadline81">
+<h4 id="orgheadline81">Gender Inequality</h4>
 <p>
 Now what if every female employee gets paid 50% more due to a
 goverment law. What do you do to make it right?
@@ -4667,8 +3757,8 @@ You know where this is going.
 </p>
 
 </section>
-<section id="slide-orgheadline108">
-<h4 id="orgheadline108">Composition To The Rescue</h4>
+<section id="slide-orgheadline82">
+<h4 id="orgheadline82">Composition To The Rescue</h4>
 <p>
 Let's use composition to make the code cleaner.
 </p>
@@ -4703,8 +3793,8 @@ We retain the original intent and managed complexity.
 </p>
 
 </section>
-<section id="slide-orgheadline109">
-<h4 id="orgheadline109">Reflection: Compose Behaviors</h4>
+<section id="slide-orgheadline83">
+<h4 id="orgheadline83">Reflection: Compose Behaviors</h4>
 <p>
 Although the example is quite contrived, the main point is to avoid
 complexity and maintain the simplicity of the process.
@@ -4721,8 +3811,21 @@ composition or the like to manage the complexity.
 </p>
 
 </section>
-<section id="slide-orgheadline116">
-<h3 id="orgheadline116">Learning To Curry</h3>
+<section id="slide-orgheadline85">
+<h3 id="orgheadline85">Reflection: <code>composes</code></h3>
+<p>
+So we just implemented one of the cornerstones of functional
+programming and it wasn't complicated. All we wanted was to remove
+the dirty parenthesis, amazing.
+</p>
+
+<p>
+Let's go learn the complimentary technique for composition.
+</p>
+
+</section>
+<section id="slide-orgheadline91">
+<h3 id="orgheadline91">Learning To Curry</h3>
 <p>
 <b>Currying</b> is a nice functional idea to sweeten composition
 </p>
@@ -4757,8 +3860,8 @@ console.log(multiplyWithTwo(2)); <span style="color: #cd853f;">// </span><span s
 </div>
 
 </section>
-<section id="slide-orgheadline111">
-<h4 id="orgheadline111">The Neat Trick</h4>
+<section id="slide-orgheadline86">
+<h4 id="orgheadline86">The Neat Trick</h4>
 <p>
 Let's have another example with a function that takes three arguments
 </p>
@@ -4788,8 +3891,8 @@ console.log(addTenAndFive(6)); <span style="color: #cd853f;">// </span><span sty
 </div>
 
 </section>
-<section id="slide-orgheadline112">
-<h4 id="orgheadline112">Naming The Trick</h4>
+<section id="slide-orgheadline87">
+<h4 id="orgheadline87">Naming The Trick</h4>
 <p>
 But this seems to be a function behavior, not logic. Maybe we can
 separate this behavior.
@@ -4824,8 +3927,8 @@ Let's implement the easy version
 </p>
 
 </section>
-<section id="slide-orgheadline113">
-<h4 id="orgheadline113">Currying For Two</h4>
+<section id="slide-orgheadline88">
+<h4 id="orgheadline88">Currying For Two</h4>
 <p>
 Copy pasting our trick from before
 </p>
@@ -4853,8 +3956,8 @@ But there is a better way.
 </p>
 
 </section>
-<section id="slide-orgheadline114">
-<h4 id="orgheadline114">Implementing <code>curry</code></h4>
+<section id="slide-orgheadline89">
+<h4 id="orgheadline89">Implementing <code>curry</code></h4>
 <p>
 This is the most fun and challenging to code but the main concept is
 to keep returning a function until enough arguments have been
@@ -4892,8 +3995,8 @@ This is the only thing that looks complicated, I swear.
 </p>
 
 </section>
-<section id="slide-orgheadline115">
-<h4 id="orgheadline115">Using <code>curry</code></h4>
+<section id="slide-orgheadline90">
+<h4 id="orgheadline90">Using <code>curry</code></h4>
 <p>
 Just a contrived use of the generic <code>curry</code>
 </p>
@@ -4925,8 +4028,8 @@ But where does this fit in with <code>compose</code>?
 </p>
 
 </section>
-<section id="slide-orgheadline120">
-<h3 id="orgheadline120">The Real Trick</h3>
+<section id="slide-orgheadline93">
+<h3 id="orgheadline93">The Real Trick</h3>
 <p>
 Curry a function until it has one argument left which you can pass
 through a composition or mapping pipeline.
@@ -4940,6 +4043,7 @@ through a composition or mapping pipeline.
     { name: <span style="color: #ffa07a;">'Pyrrha Nikos'</span>, team: <span style="color: #ffa07a;">'JNPR'</span>}
 ];
 
+<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Remember set takes three arguments: key, value, object</span>
 <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">setHealth</span> = curry(set)(<span style="color: #ffa07a;">'hp'</span>, 100),
     setScore = curry(set)(<span style="color: #ffa07a;">'score'</span>, 0);
 
@@ -4961,8 +4065,8 @@ given them more specific uses.
 </p>
 
 </section>
-<section id="slide-orgheadline117">
-<h4 id="orgheadline117">Currying And Filtering</h4>
+<section id="slide-orgheadline92">
+<h4 id="orgheadline92">Currying And Filtering</h4>
 <p>
 How about using it in conjuction with filter? Given a list of
 heroes, I want to filter the intelligence type heroes in the list or team.
@@ -5001,76 +4105,19 @@ Still cool
 </p>
 
 </section>
-<section id="slide-orgheadline118">
-<h4 id="orgheadline118">Fixed Options</h4>
+<section id="slide-orgheadline94">
+<h3 id="orgheadline94">Reflection: <code>curry</code></h3>
 <p>
-Let's say you have a third party component <code>componentBuilder</code> and
-the a web page has a whole lot of it. You can curry the builder with
-the options required and let it be the function that builds it to
-serve as a function interface.
+Another cornerstone has been implemented. We now have the ability to
+create functions from old one.
 </p>
 
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #cd853f;">// </span><span style="color: #cd853f;">The third party builder function</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">componentBuilder</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">options</span>, <span style="color: #9acd32;">element</span>) {
-    <span style="color: #cd853f;">/* </span><span style="color: #cd853f;">... */</span>
-};
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">The options for the page</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">pageOptions</span> = {
-    <span style="color: #cd853f;">/* </span><span style="color: #cd853f;">... */</span>
-}
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">I don't care about the options, just build it when I give it to you</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">buildComponent</span> = curry(componentBuilder)(pageOptions);
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">domComponents</span> = [
-    document.getElementById(<span style="color: #ffa07a;">'period'</span>),
-    document.getElementById(<span style="color: #ffa07a;">'type'</span>),
-    document.getElementById(<span style="color: #ffa07a;">'projects'</span>)
-];
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Just build it for each of this</span>
-domComponents.forEach(buildComponent);
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline119">
-<h4 id="orgheadline119">I Want My Modules Curried</h4>
 <p>
-I love currying functions that all my functions in my module should be
-curried by default.
+But the real question is: are there more tricks like this?
 </p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">isTypeOf</span> = curry(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">type</span>, <span style="color: #9acd32;">value</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #20b2aa; font-weight: bold;">typeof</span> value === type;
-});
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">isFunction</span> = isTypeOf(<span style="color: #ffa07a;">'function'</span>);
-
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">invokeIf</span> = curry(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">pred</span>, <span style="color: #9acd32;">f</span>, <span style="color: #9acd32;">value</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">return</span> pred(value) ? f(value) : value;
-});
-
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">autoCurry</span> = curry(mapObject)(invokeIf(isFunction, curry));
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">Module</span> = autoCurry({
-    <span style="color: #00ff7f;">doThis</span>: <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">a</span>, <span style="color: #9acd32;">b</span>) { console.log([a, b]); }
-});
-
-Module.doThis(1)(<span style="color: #ffa07a;">'b'</span>); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: [1, 'b']</span>
-</pre>
-</div>
-
 </section>
-<section id="slide-orgheadline121">
-<h3 id="orgheadline121">4th Virtue: Everything Should Be A Function</h3>
+<section id="slide-orgheadline95">
+<h3 id="orgheadline95">4th Virtue: Everything Should Be A Function</h3>
 <p>
 With higher ordered concepts like composition and currying, if
 everything is a function then all of them benefit from higher order
@@ -5078,655 +4125,102 @@ abstractions.
 </p>
 
 <p>
+There are other higher order functions that sweeten the deal.
+</p>
+
+<p>
 Now you know why <code>get</code> and <code>set</code> are functions so that they can be
 curried and composed.
 </p>
 
+</section>
+<section id="slide-orgheadline96">
+<h3 id="orgheadline96">Currying Our Old Trick</h3>
 <p>
-There are other higher order functions that sweeten the deal.
+Tying this back to our old previous tools
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">characters</span> = [
+    { id: 314, name: <span style="color: #ffa07a;">'Dilbert'</span>, source: <span style="color: #ffa07a;">'Dilbert'</span>},
+    { id: 319, name: <span style="color: #ffa07a;">'Catbert'</span>, source: <span style="color: #ffa07a;">'Dilbert'</span>},
+    { id: 325, name: <span style="color: #ffa07a;">'Sally'</span>, source: <span style="color: #ffa07a;">'Peanuts'</span>}
+];
+
+<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">getId</span> = curry(get)(<span style="color: #ffa07a;">'id'</span>),
+    getIds = curry(map)(getId); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Currying our implementation</span>
+
+console.log(getIds(characters)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: [314, 319, 325]</span>
+
+<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">isFromPeanuts</span> = curry(get)(<span style="color: #ffa07a;">'id'</span>),
+    fromPeanuts = curry(filter)(isFromPeanuts);
+
+console.log(fromPeanuts(characters)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: [{id:325,name:'Sally',source:'Peanuts'}]</span>
+
+<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">getIdByPeanuts</span> = pipe(isFromPeanuts, getIds);
+
+console.log(getIdByPeanuts(characters)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: [325]</span>
+</pre>
+</div>
+
+<p>
+If this did not impress you, I don't know what will.
 </p>
 
 </section>
-<section id="slide-orgheadline122">
-<h3 id="orgheadline122">Quick Review</h3>
+<section id="slide-orgheadline97">
+<h3 id="orgheadline97">Reflection: <code>curry</code></h3>
 <p>
-So those are my fundamental tricks.
+We implemented one of the nice tricks of functional programming, we
+can now extract functions from old one by presetting the
+arguments.
+</p>
+
+<p>
+But the idea is that combining functions is really not that hard. How
+many more ways can we play with functions?
+</p>
+
+</section>
+<section id="slide-orgheadline98">
+<h3 id="orgheadline98">Quick Review</h3>
+<p>
+So those are the fundamental tricks.
 </p>
 
 <ul>
 <li><code>compose</code>, <code>pipe</code> and <code>curry</code> are fun tools to implement and have</li>
-<li>Combining functions are easy</li>
-<li>Making new functions from old are easy</li>
+<li>Gluing functions are easy</li>
+<li>Making new functions from old</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline145">
-<h2 id="orgheadline145">Chapter 3: State Of Functions</h2>
+<section id="slide-orgheadline100">
+<h2 id="orgheadline100">At The End Of It All</h2>
 <p>
-This last section is much more concerned with the philosophy of this paradigm
-</p>
-
-<p>
-Spoilers
-</p>
-
-<ul>
-<li>Closures</li>
-<li>Immediately Invoked Function Expressions(IIFE)</li>
-
-</ul>
-
-</section>
-<section id="slide-orgheadline126">
-<h3 id="orgheadline126">A Question Of Design</h3>
-<p>
-Does anyone know the output of this snippet?
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">games</span> = [<span style="color: #ffa07a;">'Tetris'</span>, <span style="color: #ffa07a;">'Pong'</span>, <span style="color: #ffa07a;">'Mortal Kombat'</span>];
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Sort the list</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">sortedGames</span> = games.sort());
-
-console.log(sortedGames);
-</pre>
-</div>
-
-<p class="fragment">
-The sorted list but there is something else afoot here.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="fragment">console.log(games === games.sort());
-</pre>
-</div>
-
-<p class="fragment">
-This returns true. The list is sorted in place, so they're the
-same. This is what is known as a <b>side effect</b>.
-</p>
-
-</section>
-<section id="slide-orgheadline124">
-<h4 id="orgheadline124">Side Effects</h4>
-<p>
-This is simply something that changes when the function is
-invoked. This is also known as <b>state mutation</b>.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">counter</span> = 0;
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">sum</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">numbers</span>) {
-    counter += 1; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">State mutation or side effect</span>
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> reduceFirst(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">a</span>, <span style="color: #9acd32;">b</span>) { <span style="color: #20b2aa; font-weight: bold;">return</span> a + b; }, numbers);
-};
-
-console.log(counter); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 0</span>
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">We didn't pass in counter...</span>
-console.log(sum([1,2,3])); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 6</span>
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">... yet why is it changed without my conset</span>
-console.log(counter); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 1</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline125">
-<h4 id="orgheadline125">A Function Of Trust And Reason</h4>
-<p>
-How do you know if a function has side effects? How do you know if
-the parameters aren't manipulated or changed without your
-consent?
+Did the code look cleaner with these concepts?
 </p>
 
 <p>
-The main point is that it is harder to reason about code or
-understand when it changes something outside it's scope or
-function.
+That is where it matters.
 </p>
-
-<p>
-Side effects aren't bad, we just want to minimize it if we can.
-</p>
-
-</section>
-<section id="slide-orgheadline127">
-<h3 id="orgheadline127">5th Virtue: (Almost) No Side Effects</h3>
-<p>
-Functions should (almost) never do the following
-</p>
-
-<ul>
-<li>Mutate the parameters</li>
-<li>Mutate global state</li>
-<li>If you do mutate, make it explicit or known</li>
-<li>If you do need state, we have closures for that</li>
-
-</ul>
-
-<p>
-This is the hardest to follow. If you notice yourself making state or
-mutating variables, consider the consequences..
-</p>
-
-</section>
-<section id="slide-orgheadline133">
-<h3 id="orgheadline133">Closures: Revisited</h3>
-<p>
-What closures really are is that they remember the environment, scope
-or variables.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">rememberThis</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">value</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">rememberMe</span> = value; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">This value will exist until function does</span>
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #20b2aa; font-weight: bold;">function</span> () {
-        <span style="color: #20b2aa; font-weight: bold;">return</span> rememberMe; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">It remembers me</span>
-    };
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">rememberTheDate</span>  = rememberThis(<span style="color: #ffa07a;">'Fifth Of November'</span>);
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Several bad puns later</span>
-
-console.log(rememberTheDate()); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: Fifth Of November</span>
-</pre>
-</div>
-
-<p>
-Here is the fun bit: can you change the value of <code>rememberMe</code> directly?
-</p>
-
-</section>
-<section id="slide-orgheadline128">
-<h4 id="orgheadline128">Closures And State</h4>
-<p>
-Closures are really state for functions.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">incrementer</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">startValue</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">currentValue</span> = startValue; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Function state</span>
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #20b2aa; font-weight: bold;">function</span> () {
-        <span style="color: #cd853f;">// </span><span style="color: #cd853f;">The value is increased each time it is called</span>
-        currentValue += 1; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Mutate the state</span>
-
-        <span style="color: #20b2aa; font-weight: bold;">return</span> currentValue;
-    };
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">increasingSequence</span> = incrementer(0);
-
-console.log(increasingSequence()); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 1</span>
-console.log(increasingSequence()); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 2</span>
-console.log(increasingSequence()); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 3</span>
-</pre>
-</div>
-
-<p>
-This is a form of state mutation that is well contained within the
-function. Nobody can access <code>currentValue</code> directly.
-</p>
-
-<p>
-You can create lazy sequences with this technique.
-</p>
-
-</section>
-<section id="slide-orgheadline129">
-<h4 id="orgheadline129">Private Variables With Closure</h4>
-<p>
-Closures can provide what is known as <b>private variables</b> to OOP
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #cd853f;">// </span><span style="color: #cd853f;">Creating an entity with function closure</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">person</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">initialName</span>, <span style="color: #9acd32;">initialGender</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">currentName</span> = initialName,
-        currentGender = initialGender;
-
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">This time we return an object that interacts with the closure</span>
-    <span style="color: #20b2aa; font-weight: bold;">return</span> {
-        <span style="color: #00ff7f;">getName</span>: <span style="color: #20b2aa; font-weight: bold;">function</span> () { <span style="color: #20b2aa; font-weight: bold;">return</span> currentName; },
-        <span style="color: #00ff7f;">getGender</span>: <span style="color: #20b2aa; font-weight: bold;">function</span> () { <span style="color: #20b2aa; font-weight: bold;">return</span> currentGender; },
-
-        <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Prefer to make a new copy but to show state here</span>
-        <span style="color: #00ff7f;">setName</span>: <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">newName</span>) { currentName = newName; },
-
-        <span style="color: #cd853f;">// </span><span style="color: #cd853f;">There is no change gender function</span>
-    };
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">me</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #ffa07a;">'FnMurillo'</span>, <span style="color: #ffa07a;">'&#9794;'</span>);
-
-console.log(me.getName()); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: FnMurillo</span>
-console.log(me.getGender()); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: &#9794;</span>
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Who I really am</span>
-me.setName(<span style="color: #ffa07a;">'Batman'</span>);
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">It changed!!</span>
-console.log(me.getName()); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: Batman</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline130">
-<h4 id="orgheadline130">Data Isolation</h4>
-<p>
-Although we can implement private variables with closures, what we
-want is to hide it as much as possible. The closure should be the
-only one to modify it state, there's really no point in hiding it in
-a closure if you are going to reveal it anyway, an object would do
-the job instead.
-</p>
-
-<p>
-This is the opposite of <b>data encapsulation</b>.
-</p>
-
-<p>
-Let's talk about a small definition to where closure applies easily
-</p>
-
-</section>
-<section id="slide-orgheadline131">
-<h4 id="orgheadline131">Idempotent Functions</h4>
-<p>
-Fancy words saying functions that always give the same output for the
-same input.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">twice</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">n</span>) { <span style="color: #20b2aa; font-weight: bold;">return</span> n * 2; }; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Math, very idempotent</span>
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Weird function that adds whatever you put in last with the current</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">addPrevious</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> () {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">previous</span> = 0;
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">n</span>) {
-        oldPrevious = previous; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Store old value</span>
-
-        previous = n; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Mutate value</span>
-
-        <span style="color: #20b2aa; font-weight: bold;">return</span> oldPrevious + n; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Do the math;</span>
-    }
-}
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">adder</span> = addPrevious();
-
-console.log(adder(5)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 5   // oldPrevious = 0, newPrevious = 5</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">Does not return the same value</span>
-console.log(adder(5)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 10  // oldPrevious = 5, newPrevious = 10</span>
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">hiddenState</span> = 0,
-    decrement = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">n</span>) {
-        hiddenState += 1;
-        <span style="color: #20b2aa; font-weight: bold;">return</span> n - 1;
-    };
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">This has side effects but it is idempotent</span>
-console.log(decrement(4)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 4 // hiddenState = 1</span>
-console.log(decrement(4)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 4 // hiddenState = 2</span>
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline132">
-<h4 id="orgheadline132">Memoization</h4>
-<p>
-Just another short demonstration using closure. If a function is
-idempotent, you can cache the values. Caching for functions basically
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #cd853f;">// </span><span style="color: #cd853f;">Memoization for one argument function</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">memoize</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">f</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">cacheTable</span> = {}; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Closure state, note that this hidden all throughout</span>
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">n</span>) { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Implemented for only one argument</span>
-        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">cachedValue</span> = get(n, cacheTable); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Get cached value</span>
-
-        <span style="color: #20b2aa; font-weight: bold;">if</span> (cachedValue === <span style="color: #1e90ff;">undefined</span>) { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">If there is no cached value</span>
-            cachedValue = f.call(<span style="color: #1e90ff;">null</span>, n); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Invoke the function</span>
-            set(n, cachedValue, cacheTable); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Store the value</span>
-        }
-
-        <span style="color: #20b2aa; font-weight: bold;">return</span> cachedValue;
-    }
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">encrypt</span> = memoize(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">text</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">veryLongEncryptionAlgorithm</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> _sha1Maybe(<span style="color: #9acd32;">text</span>) { <span style="color: #cd853f;">/* </span><span style="color: #cd853f;">... */</span>};
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> veryLongEncryptionAlgorithm(text);
-});
-</pre>
-</div>
-
-<p>
-Again, this is just to show that closures are supposed to hide
-state.
-</p>
-
-</section>
-<section id="slide-orgheadline137">
-<h3 id="orgheadline137">Starting With Functions</h3>
-<p>
-There is a nice feature or trick in JavaScript known as <b>Immediately
-Invoked Function Expression</b> or <b>IIFE</b> for short.
-</p>
-
-<p>
-This just creating a function and invoking immediately.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">y</span> = (<span style="color: #20b2aa; font-weight: bold;">function</span> _iife() { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Just create a function</span>
-    <span style="color: #20b2aa; font-weight: bold;">return</span> 1; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Why do this?</span>
-}()); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">... and wrap it with an open close parenthesis</span>
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">z</span> = 1; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Why not just do this instead?</span>
-</pre>
-</div>
-
-<p>
-This is cute, but what is is good for? Since it is a function, it has
-closure; so anything you put inside it, remains inside.
-</p>
-
-</section>
-<section id="slide-orgheadline134">
-<h4 id="orgheadline134">Creating A Namespace</h4>
-<p>
-When creating scripts for JavaScript, it's good to wrap the whole
-script as an IIFE to prevent and variable leaks since the default
-scope of variables is global.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript">(<span style="color: #20b2aa; font-weight: bold;">function</span> _importMyCustomScript() {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">myScriptVar</span> = 1;
-
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Assume the global namespace for my app is XYZ</span>
-    XYZ.myFunction = <span style="color: #20b2aa; font-weight: bold;">function</span> () { <span style="color: #20b2aa; font-weight: bold;">return</span> myScriptVar; };
-}());
-</pre>
-</div>
-
-<p>
-This goes hand in hand with creating a global namespace if you are
-working with the browser but we're not really going to dwell into that.
-</p>
-
-</section>
-<section id="slide-orgheadline135">
-<h4 id="orgheadline135">Creating A Module</h4>
-<p>
-You can also create a module using IIFE with this pattern.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #cd853f;">// </span><span style="color: #cd853f;">Using IIFE to make modules</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">FP</span> = (<span style="color: #20b2aa; font-weight: bold;">function</span> () {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">hiddenVarInModule</span> = 1;
-
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Object.create allows us to create truly empty object</span>
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">Module</span> = Object.create(<span style="color: #1e90ff;">null</span>); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">or {} is enough if you don't care</span>
-
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Object.freeze makes an object readonly</span>
-    <span style="color: #20b2aa; font-weight: bold;">return</span> Object.freeze(Module); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">or Module if you don't care</span>
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Return the module</span>
-}());
-</pre>
-</div>
-
-</section>
-<section id="slide-orgheadline136">
-<h4 id="orgheadline136">Starting An Idea</h4>
-<p>
-Not the best use, but when you are trying to sketch a function and
-can't decide if it can be refactored. Starting with IIFE can get you
-started.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">originalFunction</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> () {
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Blah blah blah</span>
-
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">New feature, need a better name for this function</span>
-    (<span style="color: #20b2aa; font-weight: bold;">function</span> _newFeature() { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">If this is used again, it is easier to refactor</span>
-        <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Everything I do is within this bubble</span>
-
-        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">x</span> = 1,
-            y= <span style="color: #ffa07a;">'a'</span>;
-
-        <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Do more stuff</span>
-    }())
-
-
-    <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Blah blah blah</span>
-};
-</pre>
-</div>
-
-<p>
-I usually sketch the prototype within an IIFE, and keep it there to
-give it a good indication of what it does. Then if it used again, I
-just turn into an legit function and refactor.
-</p>
-
-</section>
-<section id="slide-orgheadline141">
-<h3 id="orgheadline141">Stateful Talk</h3>
-<p>
-Hiding state.
-</p>
-
-<p>
-This is what closures should ultimately do. But what if you had to?
-Here are some examples.
-</p>
-
-</section>
-<section id="slide-orgheadline138">
-<h4 id="orgheadline138">Objects As Stateful Value</h4>
-<p>
-JavaScript has blessed syntax for object creation: easy and flexible
-to use.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">myObject</span> = {
-    myText: <span style="color: #ffa07a;">''</span>,
-    myValue: <span style="color: #1e90ff;">null</span>,
-    mySubObject: {
-        isEmpty: <span style="color: #1e90ff;">true</span>
-    },
-};
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">It's actuall okay to mutate</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">NOTE: A comment to say that it mutates</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">newObject</span> = set(<span style="color: #ffa07a;">'myText'</span>, <span style="color: #ffa07a;">'xyz'</span>, myObject);
-
-console.log(myObject.myText); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: 'xyz'</span>
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">but</span>
-console.log(newObject === myObject); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: true</span>
-</pre>
-</div>
-
-<p>
-I put an object in, I get an object out. I don't care if you mutated
-it, but be very mindful or explicit about this. Comments are your
-friends. Using objects as a data format is a solid way to go about it.
-</p>
-
-<p>
-One of your friends too in this field is known as <b>Immutability</b> which
-might be a different topic.
-</p>
-
-</section>
-<section id="slide-orgheadline139">
-<h4 id="orgheadline139">State As A Value</h4>
-<p>
-What if given a big list of numbers, compute the average; what if
-you could loop through it once? How would you do it?
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">bigDoop</span> = [1, 2, 3, <span style="color: #cd853f;">/* </span><span style="color: #cd853f;">... */</span>, 10000000]; <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Just a very big set</span>
-
-<span style="color: #cd853f;">// </span><span style="color: #cd853f;">What appears to be more cumbersome</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">computeAverage</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">numbers</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">getSum</span> = curry(get)(0),
-        getCount = curry(get)(1);
-
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">totals</span> = numbers.reduce(<span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">prev</span>, <span style="color: #9acd32;">number</span>) {
-        <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">currentSum</span> = getSum(prev),
-            currentCount = getCount(prev);
-
-        <span style="color: #20b2aa; font-weight: bold;">return</span> [currentSum + number, currentCount + 1];
-    }, [0, 0]); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Setting the initial state</span>
-
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">sum</span> = get(0, totals),
-        count = get(1, totals);
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> sum / count;
-};
-
-console.log(computeAverage(bigDoop)); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">out: More numbers than Iron Man</span>
-</pre>
-</div>
-
-<p>
-Notice the use of a lists to pass in state, the count and the
-sum. If you're in a pipeline, it is much better to make the state
-explicit as a value for all to see and inspect.
-</p>
-
-</section>
-<section id="slide-orgheadline140">
-<h4 id="orgheadline140">State As An Argument</h4>
-<p>
-This is not really practical but just to get your attention. Let's
-implement a fancy recursive factorial implementation.
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-javascript"><span style="color: #cd853f;">// </span><span style="color: #cd853f;">Avoid doing this, this is not helpful</span>
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">factorial</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">n</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">factorialHelper</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> _recurse(<span style="color: #9acd32;">n</span>, <span style="color: #9acd32;">value</span>) {
-        <span style="color: #20b2aa; font-weight: bold;">if</span> (n &lt;= 0) { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">If done, return the value</span>
-            <span style="color: #20b2aa; font-weight: bold;">return</span> value;
-        } <span style="color: #20b2aa; font-weight: bold;">else</span> { <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Else, do it again with the new state</span>
-            <span style="color: #20b2aa; font-weight: bold;">return</span> _recurse(n - 1, value * n); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">This is unhealthy to pass state</span>
-        }
-    };
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> factorialHelper(n, 1); <span style="color: #cd853f;">// </span><span style="color: #cd853f;">Call with initial state</span>
-};
-
-<span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">factorialWhile</span> = <span style="color: #20b2aa; font-weight: bold;">function</span> (<span style="color: #9acd32;">n</span>) {
-    <span style="color: #20b2aa; font-weight: bold;">var</span> <span style="color: #9acd32;">value</span> = 1;
-
-    <span style="color: #20b2aa; font-weight: bold;">while</span> (n &gt; 0) {
-        value *= n;
-        n-= 1;
-    }
-
-    <span style="color: #20b2aa; font-weight: bold;">return</span> value;
-}
-</pre>
-</div>
-
-<p>
-If JavaScript was tail optimized, we would really do more of this
-but it scares me to do it. But this is just to show the weird way to
-pass in state.
-</p>
-
-</section>
-<section id="slide-orgheadline142">
-<h3 id="orgheadline142">Managing State Is Hard</h3>
-<p>
-In reality, hiding state is hard.
-</p>
-
-<p>
-Being explicit about state almost translates to more code; this is
-what can put you off to declare that global variable or just hack the
-state variables.
-</p>
-
-<p>
-I suggest paying the explicit code than someone paying for it
-implicitly.
-</p>
-
-</section>
-<section id="slide-orgheadline143">
-<h3 id="orgheadline143">Know Thy Closure</h3>
-<p>
-Despite all that rant about state, if JavaScript didn't have closure,
-I wouldn't know what to do about my work and there really wouldn't be
-a functional paradigm for it.
-</p>
-
-<p>
-Imagine if you could access all the variables inside a function?
-</p>
-
-</section>
-<section id="slide-orgheadline144">
-<h3 id="orgheadline144">Quick Review</h3>
-<p>
-Have I made my point?
-</p>
-
-<ul>
-<li>Closures are underrated in managing state</li>
-<li>State makes code more complex, hide if you must</li>
-<li>Objects and lists make excellent function data interchange</li>
-
-</ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline150">
-<h2 id="orgheadline150">Epilogue: JavaScript Is Functional</h2>
+<section id="slide-orgheadline106">
+<h2 id="orgheadline106">JavaScript Is Functional</h2>
 <p>
-End of the line.
+End of the line. Wrap it up fool. I hope you found
 </p>
 
 </section>
-<section id="slide-orgheadline146">
-<h3 id="orgheadline146">JavaScript Is Awesome</h3>
+<section id="slide-orgheadline101">
+<h3 id="orgheadline101">JavaScript Is Awesome</h3>
 <p>
 JavaScript is really cool for me because of the following.
 </p>
@@ -5748,8 +4242,26 @@ in my heart.)
 </p>
 
 </section>
-<section id="slide-orgheadline147">
-<h3 id="orgheadline147">The Power Of Functions In JavaScript</h3>
+<section id="slide-orgheadline102">
+<h3 id="orgheadline102">Reflection: Refactoring</h3>
+<p>
+You could have noticed that all the machinery we built can be written
+by hand, a simple function and a desire to make code cleaner.
+</p>
+
+<p>
+There are a lot of other things you can do with functions, really a
+lot more I didn't mention or rather you can discover like uncharted
+territory.
+</p>
+
+<p>
+<b>Use your imagination.</b>
+</p>
+
+</section>
+<section id="slide-orgheadline103">
+<h3 id="orgheadline103">The Power Of Functions In JavaScript</h3>
 <p>
 If you forgot what I said, here it is.
 </p>
@@ -5760,19 +4272,21 @@ If you forgot what I said, here it is.
 <li>Think input and output, processes not details</li>
 <li>Avoid for loops and ifs</li>
 <li>Hide implementation details</li>
-<li>Hide state as much as possible</li>
 <li><b>Have fun</b></li>
 
 </ul>
 
 </section>
-<section id="slide-orgheadline148">
-<h3 id="orgheadline148">What I Didn't Say</h3>
+<section id="slide-orgheadline104">
+<h3 id="orgheadline104">What I Didn't Say</h3>
 <p>
 Compare JavaScript with Haskell if you want to see the light
 </p>
 
 <ul>
+<li>Partial Application</li>
+<li>Closures
+The chapter I removed from this presentation</li>
 <li>Types</li>
 <li>Monads</li>
 <li>Functors</li>
@@ -5782,10 +4296,10 @@ Compare JavaScript with Haskell if you want to see the light
 </ul>
 
 </section>
-<section id="slide-orgheadline149">
-<h3 id="orgheadline149">Future Of Functional Programming</h3>
+<section id="slide-orgheadline105">
+<h3 id="orgheadline105">Future Of Functional Programming</h3>
 <p>
-I am not an Oracle but&#x2026;
+I am not an prophet but&#x2026;
 </p>
 
 <ul>
@@ -5806,8 +4320,8 @@ perspective.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline151">
-<h2 id="orgheadline151">Lastly</h2>
+<section id="slide-orgheadline107">
+<h2 id="orgheadline107">Lastly</h2>
 <p>
 No matter what I say or what paradigm is out there. Good code is
 something you work for. There is really no silver bullet.
@@ -5826,8 +4340,8 @@ than its Prototypical nature.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline152">
-<h2 id="orgheadline152">Now GTFO</h2>
+<section id="slide-orgheadline108">
+<h2 id="orgheadline108">Now GTFO</h2>
 <p>
 Thank you for letting me waste your time. I hope you learned something
 or even just the idea.
@@ -5836,12 +4350,12 @@ or even just the idea.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline156">
-<h2 id="orgheadline156">References</h2>
-<div class="outline-text-2" id="text-orgheadline156">
+<section id="slide-orgheadline112">
+<h2 id="orgheadline112">References</h2>
+<div class="outline-text-2" id="text-orgheadline112">
 </div></section>
-<section id="slide-orgheadline153">
-<h3 id="orgheadline153">Books</h3>
+<section id="slide-orgheadline109">
+<h3 id="orgheadline109">Books</h3>
 <ul>
 <li><a href="http://shop.oreilly.com/product/9780596517748.do">Javascript: The Good Parts</a></li>
 <li><a href="http://shop.oreilly.com/product/0636920028857.do">Functional JavaScript</a></li>
@@ -5850,8 +4364,8 @@ or even just the idea.
 </ul>
 
 </section>
-<section id="slide-orgheadline154">
-<h3 id="orgheadline154">Libraries</h3>
+<section id="slide-orgheadline110">
+<h3 id="orgheadline110">Libraries</h3>
 <ul>
 <li><a href="https://lodash.com/">lodash</a> - a good functional library</li>
 <li><a href="http://jquery.com/">jquery</a> - not obvious but it really is a monad</li>
@@ -5860,8 +4374,8 @@ or even just the idea.
 </ul>
 
 </section>
-<section id="slide-orgheadline155">
-<h3 id="orgheadline155">Languages</h3>
+<section id="slide-orgheadline111">
+<h3 id="orgheadline111">Languages</h3>
 <ul>
 <li><a href="https://www.haskell.org/">haskell</a> - the language drug to functional programming</li>
 <li><a href="http://clojure.org/">clojure</a> - the functional lisp since Scheme</li>
